@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "gulp": "^3.9.1",
+    "vue-resource": "^1.2.0"
   }
 }
