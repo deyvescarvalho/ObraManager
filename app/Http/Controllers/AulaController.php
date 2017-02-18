@@ -20,8 +20,10 @@ class AulaController extends Controller
     public function index()
     {
       # code...
+
+      $aulas = $this->aula->all();
       $messages = 'Ola mundo estou na home';
-      return view('aula.index', compact('messages'));
+      return view('aula.index', compact('aulas'));
     }
 
     public function create()
@@ -48,14 +50,16 @@ class AulaController extends Controller
 
 
         # code...
-        $cpf = $this->aula->where('cpf', $request->input('cpf'));
-        if ($cpf) {
-          return redirect()->route('aula.create')->with('status', 'Cpf já cadastrado');
-        }else {
+        // $cpf = $this->aula->where('cpf', $request->input('cpf'));
+        // $cpf = $this->aula->where('cpf', $request->input('cpf'))->first();
+        // dd($cpf->all());
+        // if ($cpf === $request->input('cpf')) {
+        //   return redirect()->route('aula.create')->with('status', 'Cpf já cadastrado');
+        // }else {
 
           $this->aula->create($request->all());
           return redirect()->route('aula.index');
-        }
+        // }
       // $request->input('nome') = str_replace($request->input('nome'), "" , "d");
       // dd($request->all());
       // dd($nome);

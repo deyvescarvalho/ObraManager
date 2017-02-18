@@ -18,6 +18,7 @@
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
     "gulp": "^3.9.1",
+    "laravel-elixir": "^6.0.0-15",
     "vue-resource": "^1.2.0"
   }
 }
