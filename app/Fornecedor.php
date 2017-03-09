@@ -4,15 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Aula extends Model
+class Fornecedor extends Model
 {
     protected $fillable = [
-      'nome',
-      'idade',
-      'dia',
-      'mes',
-      'ano',
-      'cpf',
+      'descricao',
+      'endereco',
       'telefone'
     ];
 }
