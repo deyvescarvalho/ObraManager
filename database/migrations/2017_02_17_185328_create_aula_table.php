@@ -17,7 +17,9 @@ class CreateAulaTable extends Migration
             $table->increments('id');
             $table->text('nome');
             $table->text('idade');
-            $table->text('dtNascimento');
+            $table->text('dia');
+            $table->text('mes');
+            $table->text('ano');
             $table->text('cpf')->unique();
             $table->text('telefone');
             $table->timestamps();
