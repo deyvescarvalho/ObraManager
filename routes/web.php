@@ -89,4 +89,21 @@ Route::get('/funcionario/novo', ['as'=>'funcionario.create', 'uses'=>'Funcionari
 
 Route::post('/funcionario/novo', ['as'=>'funcionario.store', 'uses'=>'FuncionarioController@store']);
 
+
+Route::group(['prefix'=>'projeto'], function ()
+{
+
+  Route::get('', ['as'=>'projeto.listagem', 'uses'=>'ProjetoController@index']);
+
+  Route::get('novo', ['as'=>'projeto.create', 'uses'=>'ProjetoController@create']);
+
+  Route::post('novo', ['as'=>'projeto.store', 'uses'=>'ProjetoController@store']);
+
+  Route::put('edit/{id}', ['as'=>'projeto.edit', 'uses'=>'ProjetoController@edit']);
+
+  Route::get('edit/{id}', ['as'=>'projeto.destroy', 'uses'=>'ProjetoController@destroy']);
+});
+
+
+
 Route::get('/home', 'HomeController@index');
