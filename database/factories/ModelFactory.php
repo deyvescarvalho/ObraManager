@@ -55,7 +55,7 @@ $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
         'dia' => $faker->randomNumber(2),
         'mes' => $faker->randomNumber(2),
         'ano' => $faker->randomNumber(4),
-        'cpf' => $faker->ean13(11),
+        'cpf' => $faker->randomNumber(11),
         'idade' => $faker->randomNumber(2),
         'cargo' => $faker->sentence,
         'endereco'=> $faker->address,
@@ -64,6 +64,16 @@ $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
         'ddd'=> $faker->randomNumber(2)
     ];
 });
+
+$factory->define(App\Projeto::class, function (Faker\Generator $faker) {
+    return [
+        'cliente' => $faker->name,
+        'endereco'=> $faker->address,
+        'cidade'=> $faker->city,
+        'precoProjeto'=> $faker->randomNumber(5)
+    ];
+});
+
 
 $factory->define(App\Produto::class, function (Faker\Generator $faker) {
     return [
