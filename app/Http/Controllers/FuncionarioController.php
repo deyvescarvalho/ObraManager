@@ -57,12 +57,12 @@ class FuncionarioController extends Controller
       'idade' => 'required|min:2|size:2',
       'email' => 'email',
       'cargo' => 'required'
-      
+
     ]);
 
     $this->funcionario->find($id)->update($request->all());
 
-    return redirect()->route('funcionario.listagem')->with('status', 'Funcionários alterado com sucesso!');
+    return redirect()->route('funcionario.listagem')->with('status', 'Funcionário alterado com sucesso!');
 
   }
 
