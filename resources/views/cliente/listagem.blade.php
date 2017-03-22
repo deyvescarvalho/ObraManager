@@ -9,7 +9,8 @@
 @section('conteudo')
 
 @if (session('status'))
-<div class="alert">
+<div class="alert success">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   {{ session('status') }}
 </div>
 
@@ -17,6 +18,9 @@
 
 
 <div class="mdl-cell mdl-cell--12-col">
+  <a href="{{ route('cliente.novo') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+    <i class="material-icons">add</i>
+  </a> Novo cliente
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
     <thead>
       <tr>

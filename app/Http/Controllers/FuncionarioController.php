@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Funcionario;
-
+use App\Cargo;
 class FuncionarioController extends Controller
 {
 
@@ -25,7 +25,8 @@ class FuncionarioController extends Controller
 
   public function create()
   {
-    return view('funcionario.cadastro');
+    $cargos = Cargo::all();
+    return view('funcionario.cadastro', compact('cargos'));
   }
 
   public function store(Request $request)
@@ -34,7 +35,8 @@ class FuncionarioController extends Controller
       'nome' => 'required',
       'idade' => 'required|min:2|size:2',
       'email' => 'email',
-      'cargo' => 'required'
+      'cidade' => 'required',
+      'cargo_id' => 'required'
     ]);
 
     $this->funcionario->create($request->all());
@@ -45,9 +47,11 @@ class FuncionarioController extends Controller
 
   public function edit($id)
   {
+    $cargos = Cargo::all();
+
     $funcionario = $this->funcionario->find($id);
 
-    return view('funcionario.edit', compact('funcionario'));
+    return view('funcionario.edit', compact(['funcionario', 'cargos']));
   }
 
   public function update($id, Request $request)
@@ -56,7 +60,8 @@ class FuncionarioController extends Controller
       'nome' => 'required',
       'idade' => 'required|min:2|size:2',
       'email' => 'email',
-      'cargo' => 'required'
+      'cidade' => 'required',
+      'cargo_id' => 'required'
 
     ]);
 
@@ -72,5 +77,12 @@ class FuncionarioController extends Controller
 
     return redirect()->route('funcionario.listagem')->with('status', 'Funcionário deletado com sucesso!');
 
+  }
+
+  public function view($id)
+  {
+    $funcionario = $this->funcionario->find($id);
+
+    return view('funcionario.detalhe', compact('funcionario'));
   }
 }
