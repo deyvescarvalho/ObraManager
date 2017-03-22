@@ -15,10 +15,14 @@ class CreateProjetosTable extends Migration
     {
         Schema::create('projetos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cliente');
+            $table->integer('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('clientes')
+                  ->onUpdate('cascade')
+                  ->onDelete('cascade');
+            // $table->string('cliente');
             $table->string('endereco');
             $table->string('cidade');
-            $table->string('precoProjeto');
+            $table->string('valorobra');
             $table->timestamps();
         });
     }
