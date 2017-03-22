@@ -29,22 +29,54 @@
   <link rel="stylesheet" href="/css/stylesmd.css">
   <style>
 
-  .demo-card-wide.mdl-card {
-  width: 100%;
-}
-.demo-card-wide > .mdl-card__title {
-  color: #fff;
-  height: 176px;
-  background: url('../assets/demos/welcome_card.jpg') center / cover;
-}
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
-}
+  .alert {
+    padding: 10px;
+    background-color: #f44336;
+    color: white;
+    opacity: 0.83;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+  }
 
-.textError{
-  list-style: none;
-  color: rgba(244,67,54,0.8);
-}
+  .alert.success {
+    background-color: #4CAF50;
+  }
+
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+
+  .demo-card-wide.mdl-card {
+    width: 100%;
+  }
+  .demo-card-wide > .mdl-card__title {
+    color: #fff;
+    height: 176px;
+    background: url('../assets/demos/welcome_card.jpg') center / cover;
+  }
+  .demo-card-wide > .mdl-card__menu {
+    color: #fff;
+  }
+
+  .textError{
+    list-style: none;
+    color: rgba(244,67,54,0.8);
+  }
+
+
 
   </style>
 </head>
@@ -54,17 +86,17 @@
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">@yield('title_page')</span>
         <div class="mdl-layout-spacer"></div>
-        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+        {{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
             <i class="material-icons">search</i>
           </label>
           <div class="mdl-textfield__expandable-holder">
             <input class="mdl-textfield__input" type="text" id="search" placeholder="Digite sua pesquisa">
           </div>
-        </div>
-        <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+        </div> --}}
+        {{-- <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
           <i class="material-icons">more_vert</i>
-        </button>
+        </button> --}}
         <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
           <li class="mdl-menu__item">About</li>
           <li class="mdl-menu__item">Contact</li>
@@ -72,30 +104,39 @@
         </ul>
       </div>
     </header>
+
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
       <header class="demo-drawer-header">
-        <img src="/images/user.jpg" class="demo-avatar">
+        <img src="/images/user_icon.png" class="demo-avatar">
         <div class="demo-avatar-dropdown">
-          <span>hello@example.com</span>
+          <span>Olá, {{ $user->name }} !</span>
           <div class="mdl-layout-spacer"></div>
           <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
             <i class="material-icons" role="presentation">arrow_drop_down</i>
             <span class="visuallyhidden">Accounts</span>
           </button>
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
-            <li class="mdl-menu__item">hello@example.com</li>
-            <li class="mdl-menu__item">info@example.com</li>
-            <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li>
-            <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a>
+            <li class="mdl-menu__item">{{ $user->email }}</li>
+            <a href="{{route('auth.logout')}}"> <li class="mdl-menu__item">  Sair </li> </a>
+            {{-- <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li> --}}
+            {{-- <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a> --}}
           </ul>
         </div>
       </header>
       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-        <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">home</i>Principal</a>
-        <a class="mdl-navigation__link" href="/cliente/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Clientes</a>
-        <a class="mdl-navigation__link" href="/funcionario/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Funcionários</a>
-        <a class="mdl-navigation__link" href="/cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Listar clientes</a>
-        <a class="mdl-navigation__link" href="/funcionario"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Listar Funcionários</a>
+        <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">dashboard</i>Principal</a>
+        {{-- <a class="mdl-navigation__link" href="/cliente/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Clientes</a>
+        <a class="mdl-navigation__link" href="/categoria/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Categoria</a>
+        <a class="mdl-navigation__link" href="/produto/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Produto</a>
+        <a class="mdl-navigation__link" href="/funcionario/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Funcionário</a>
+        <a class="mdl-navigation__link" href="/fornecedor/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Fornecedor</a>
+        <a class="mdl-navigation__link" href="/projeto/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Projetos</a> --}}
+        <a class="mdl-navigation__link" href="/cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Clientes</a>
+        <a class="mdl-navigation__link" href="/fornecedor"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Fornecedores</a>
+        <a class="mdl-navigation__link" href="/funcionario"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Funcionários</a>
+        <a class="mdl-navigation__link" href="/categoria"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Categorias</a>
+        <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Produtos</a>
+        <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Projetos</a>
 
       </nav>
     </div>
@@ -154,7 +195,6 @@
   </svg>
 
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  crossorigin="anonymous"></script>
 
 </body>
 </html>
