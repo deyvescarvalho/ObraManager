@@ -13,6 +13,6 @@ class FuncionarioTableSeeder extends Seeder
     {
         Funcionario::truncate();
         factory('App\Funcionario', 20)->create();
-        
+
     }
 }

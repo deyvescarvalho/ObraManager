@@ -13,6 +13,6 @@ class ProjetoTableSeeder extends Seeder
     {
         //
         Projeto::truncate();
-        factory('App\Projeto', 20)->create();
+        factory('App\Projeto', 10)->create();
     }
 }

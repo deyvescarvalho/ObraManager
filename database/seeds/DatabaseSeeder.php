@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\User;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        User::truncate();
         factory('App\User')->create(
           [
               'name' => 'Deyves',
@@ -24,5 +25,10 @@ class DatabaseSeeder extends Seeder
         // $this->call(PostsTableSeeder::class);
         $this->call(ClienteTableSeeder::class);
         $this->call(FuncionarioTableSeeder::class);
+        $this->call(ProjetoTableSeeder::class);
+        $this->call(CategoriaTableSeeder::class);
+        $this->call(ProdutoTableSeeder::class);
+        $this->call(FornecedorTableSeeder::class);
+        $this->call(CargoTableSeeder::class);
     }
 }
