@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Cargo;
 class Funcionario extends Model
 {
     protected $fillable = [
       'nome',
       'cpf',
       'email',
-      'cargo',
+      'cargo_id',
       'idade',
       'dia',
       'mes',
@@ -20,4 +20,14 @@ class Funcionario extends Model
       'cidade',
       'endereco'
     ];
+
+    public function cargo()
+    {
+      return $this->belongsTo(Cargo::class);
+    }
+
+    public function projetos()
+    {
+      return $this->belongsToMany(Projeto::class, 'lancamento_projetos_funcionarios');
+    }
 }
