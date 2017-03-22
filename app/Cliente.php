@@ -19,4 +19,9 @@ class Cliente extends Model
       'cidade',
       'endereco'
     ];
+
+    public function projeto()
+    {
+      return $this->hasMany(Projeto::class);
+    }
 }
