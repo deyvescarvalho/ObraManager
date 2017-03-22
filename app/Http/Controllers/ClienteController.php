@@ -20,7 +20,8 @@ class ClienteController extends Controller
     $this->validate($request, [
       'nome' => 'required',
       'idade' => 'required|min:2|size:2',
-      'email' => 'email'
+      'email' => 'email',
+      'cidade' => 'required'
     ]);
 
     Cliente::create($request->all());
@@ -61,7 +62,8 @@ class ClienteController extends Controller
     $this->validate($request, [
       'nome' => 'required',
       'idade' => 'required|min:2|size:2',
-      'email' => 'email'
+      'email' => 'email',
+      'cidade' => 'required'
     ]);
 
     Cliente::find($id)->update($request->all());
