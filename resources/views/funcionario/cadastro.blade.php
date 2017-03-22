@@ -4,37 +4,7 @@
 @section('title_page', 'Cadastro de Funcionário')
 
 @section('conteudo')
-<style media="screen">
-.alert {
-  padding: 10px;
-  background-color: #f44336;
-  color: white;
-  opacity: 0.83;
-  transition: opacity 0.6s;
-  margin-bottom: 15px;
-}
 
-.alert.success {
-  background-color: #4CAF50;
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
-}
-</style>
 @if (count($errors) > 0)
   <ul>
     @foreach ($errors->all() as $error)

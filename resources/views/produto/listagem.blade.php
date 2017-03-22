@@ -18,6 +18,9 @@
 
 
 <div class="mdl-cell mdl-cell--12-col">
+  <a href="{{ route('produto.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+    <i class="material-icons">add</i>
+  </a> Novo produto
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
     <thead>
       <tr>

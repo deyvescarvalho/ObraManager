@@ -11,6 +11,7 @@
     </optgroup>
   @endforeach
 </select>
+<?php // TODO: voltar para ver questao de lançar funcionarios na obra ?>
 <br>
 <select class="mdl-textfield__input mdl-js-textfield mdl-cell mdl-cell--3-col" name="fornecedor_id">
   <option value="">Selecione o fornecedor</option>

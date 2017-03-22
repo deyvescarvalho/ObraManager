@@ -6,18 +6,23 @@
 @section('conteudo')
 
 @if (count($errors) > 0)
-<div class="alert alert-danger">
-  <ul>
-    @foreach ($errors->all() as $error)
-    <li class="textError">{{ $error }}</li>
-    @endforeach
-  </ul>
-</div>
+<ul>
+  @foreach ($errors->all() as $error)
+  <li class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+    {{ $error }}
+  </li>
+  @endforeach
+</ul>
 @endif
 
 @if (session('status'))
-<div class="alert alert-success">
+
+<div class="success">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   {{ session('status') }}
+
 </div>
 @endif
 
@@ -41,5 +46,5 @@
 
   </div>
 
-
-  @endsection
+</div>
+@endsection

@@ -4,6 +4,7 @@
 </div> -->
 
 <select class="mdl-textfield__input" name="cliente_id">
+  <option value="">Selecione o cliente</option>
   @foreach($clientes as $cliente)
   <option value="{{$cliente->id}}">{{$cliente->nome}}</option>
   @endforeach

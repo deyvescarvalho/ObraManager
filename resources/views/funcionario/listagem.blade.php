@@ -9,7 +9,8 @@
 @section('conteudo')
 
 @if (session('status'))
-<div class="alert">
+<div class="alert success">
+  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
   {{ session('status') }}
 </div>
 
@@ -17,6 +18,9 @@
 
 
 <div class="mdl-cell mdl-cell--12-col">
+  <a href="{{ route('funcionario.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
+    <i class="material-icons">add</i>
+  </a> Novo funcionário
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
     <thead>
       <tr>
@@ -36,7 +40,13 @@
         <td class="mdl-data-table__cell--non-numeric">{{$funcionario->idade}}</td>
         <td class="mdl-data-table__cell--non-numeric">{{$funcionario->dia}}/{{$funcionario->mes}}/{{$funcionario->ano}}</td>
         <td class="mdl-data-table__cell--non-numeric">{{$funcionario->cpf}}</td>
-        <td class="mdl-data-table__cell--non-numeric">{{$funcionario->cargo}}</td>
+        @if ($funcionario->cargo)
+
+          <td class="mdl-data-table__cell--non-numeric">{{$funcionario->cargo->descricao}}</td>
+        @else
+          <td class="mdl-data-table__cell--non-numeric"> -- Sem profissão -- </td>
+
+        @endif
         <td class="mdl-data-table__cell--non-numeric">({{$funcionario->ddd}}) - {{$funcionario->telefone}}</td>
         <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('funcionario.edit', ['id'=>$funcionario->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">edit</i></a></td>
         <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('funcionario.destroy', ['id'=>$funcionario->id]) }}" onClick="return confirm('Deseja realmente deletar o funcionario ?')" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">delete</i></a></td>

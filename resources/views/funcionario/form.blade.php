@@ -64,7 +64,11 @@
 
 
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--5-col">
+  <select class="mdl-textfield__input" name="cargo_id">
+    <option value="">Selecione uma profissão</option>
+    @foreach($cargos as $cargo)
+      <option value="{{$cargo->id}}">{{$cargo->descricao}}</option>
+    @endforeach
+  </select>
 
-  {!! Form::select('cargo', array(null=>'Escolha um cargo', 'administrador' => 'Administrador', 'arquiteto'=>'Arquiteto', 'mestreobra' => 'Mestre de obras', 'pedreiro'=>'Pedreiro'), null, ['class'=>'mdl-textfield__input']) !!}
-  <span class="mdl-textfield__error">Escolha uma profissão!</span>
 </div>
