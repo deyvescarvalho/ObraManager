@@ -181,24 +181,28 @@ Route::post('/api/cliente', 'ClienteController@store');
 Route::get('/api/cliente/{id}', 'ClienteController@show');
 Route::delete('/api/cliente/{id}', 'ClienteController@destroy');
 
-Route::get('/funcionario', ['as'=>'funcionario.listagem', 'uses'=>'FuncionarioController@index']);
-
-Route::get('/funcionario/edit/{id}', ['as'=>'funcionario.edit', 'uses'=>'FuncionarioController@edit']);
-
-Route::put('/funcionario/edit/{id}', ['as'=>'funcionario.update', 'uses'=>'FuncionarioController@update']);
-
-Route::get('/funcionario/view/{id}', ['as'=>'funcionario.detalhe', 'uses'=>'FuncionarioController@view']);
-
-Route::get('/funcionario/delete/{id}', ['as'=>'funcionario.destroy', 'uses'=>'FuncionarioController@destroy']);
-
-Route::get('/funcionario/novo', ['as'=>'funcionario.create', 'uses'=>'FuncionarioController@create']);
-
-Route::post('/funcionario/novo', ['as'=>'funcionario.store', 'uses'=>'FuncionarioController@store']);
 
 
 
 
 
+Route::group(['middleware' => 'auth'], function(){
+  // Route::auth();
+  Route::get('/funcionario', ['as'=>'funcionario.listagem', 'uses'=>'FuncionarioController@index']);
+
+  Route::get('/funcionario/edit/{id}', ['as'=>'funcionario.edit', 'uses'=>'FuncionarioController@edit']);
+
+  Route::put('/funcionario/edit/{id}', ['as'=>'funcionario.update', 'uses'=>'FuncionarioController@update']);
+
+  Route::get('/funcionario/view/{id}', ['as'=>'funcionario.detalhe', 'uses'=>'FuncionarioController@view']);
+
+  Route::get('/funcionario/delete/{id}', ['as'=>'funcionario.destroy', 'uses'=>'FuncionarioController@destroy']);
+
+  Route::get('/funcionario/novo', ['as'=>'funcionario.create', 'uses'=>'FuncionarioController@create']);
+
+  Route::post('/funcionario/novo', ['as'=>'funcionario.store', 'uses'=>'FuncionarioController@store']);
+
+});
 
 
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
