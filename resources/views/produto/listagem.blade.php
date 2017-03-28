@@ -36,12 +36,7 @@
       @foreach($produtos as $produto)
       <tr>
         <td class="mdl-data-table__cell--non-numeric ">{{$produto->descricao}}</td>
-        <td class="mdl-data-table__cell--non-numeric ">
-          @if($produto->categoria)
-            {{$produto->categoria->descricao}}
-          @else
-            -
-          @endif
+        <td class="mdl-data-table__cell--non-numeric ">{{$produto->categoria->descricao or 'Sem categoria'}}
         </td>
         <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('produto.edit', ['id'=>$produto->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">edit</i></a></td>
         <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('produto.destroy', ['id'=>$produto->id]) }}" onClick="return confirm('Deseja realmente deletar a produto ?')" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">delete</i></a></td>
