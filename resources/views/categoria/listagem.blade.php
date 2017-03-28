@@ -20,6 +20,8 @@
   <a href="{{ route('categoria.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
     <i class="material-icons">add</i>
   </a> Nova categoria
+  @if (count($categorias) > 0)
+
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
     <thead>
       <tr>
@@ -37,6 +39,10 @@
       @endforeach
     </tbody>
   </table>
+  {{ $categorias->render() }}
+@else
+  <h2>Não hà categorias cadastrados</h2>
+@endif
   <style media="screen">
   ul.pagination {
     display: inline-block;
@@ -54,6 +60,5 @@ ul.pagination li a {
 }
 
   </style>
-  {{ $categorias->render() }}
 </div>
 @endsection
