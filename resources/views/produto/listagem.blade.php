@@ -21,6 +21,9 @@
   <a href="{{ route('produto.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
     <i class="material-icons">add</i>
   </a> Novo produto
+
+  @if (count($produtos) > 0)
+
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
     <thead>
       <tr>
@@ -46,6 +49,10 @@
       @endforeach
     </tbody>
   </table>
+  {{ $produtos->render() }}
+@else
+  <h2>Não hà produtos cadastrados</h2>
+@endif
   <style media="screen">
   ul.pagination {
     display: inline-block;
@@ -63,6 +70,5 @@
   }
 
   </style>
-  {{ $produtos->render() }}
 </div>
 @endsection
