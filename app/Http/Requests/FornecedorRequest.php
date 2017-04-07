@@ -13,7 +13,7 @@ class FornecedorRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,22 @@ class FornecedorRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+          'descricao' => 'required',
+          'ddd' => 'required',
+          'telefone' => 'required',
+          'endereco' => 'required',
+          'cidade' => 'required'
         ];
+    }
+
+    public function messages()
+    {
+      return [
+        'descricao.required' => 'Atenção! Informe a descricao!',
+        'ddd.required' => 'Atenção! Informe o ddd!',
+        'telefone.required' => 'Atenção! Informe o telefone!',
+        'endereco.required' => 'Atenção! Informe o endereço!',
+        'cidade.required' => 'Atenção! Informe a cidade!'
+      ];
     }
 }
