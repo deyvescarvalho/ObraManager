@@ -76,7 +76,9 @@
     color: rgba(244,67,54,0.8);
   }
 
-
+@php
+  $user = Auth::user();
+@endphp
 
   </style>
 </head>
@@ -136,6 +138,7 @@
         <a class="mdl-navigation__link" href="/funcionario"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Funcionários</a>
         <a class="mdl-navigation__link" href="/categoria"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Categorias</a>
         <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Produtos</a>
+        <a class="mdl-navigation__link" href="/cargo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Profissões</a>
         <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Projetos</a>
 
       </nav>
@@ -195,6 +198,10 @@
   </svg>
 
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script>
+<script src="/js/mascara_moeda.js" charset="utf-8"></script>
 
 </body>
 </html>

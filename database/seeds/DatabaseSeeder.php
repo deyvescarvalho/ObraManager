@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
               'name' => 'Deyves',
               'email' => 'deyvescarvalho@gmail.com',
               // 'password' => $password ?: $password = bcrypt('secret'),
-              'password' => bcrypt('secret'),
+              'password' => bcrypt('123456'),
               'remember_token' => str_random(10),
           ]
         );

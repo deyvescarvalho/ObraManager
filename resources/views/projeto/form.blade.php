@@ -11,7 +11,7 @@
 </select>
 
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col">
-  {!! Form::text('valorobra', null, ['id'=>'valorobra', 'class'=>"mdl-textfield__input", 'pattern'=>"-?[0-9]*(\.[0-9]+)?"]) !!}
+  {!! Form::text('valorobra', null, ['id'=>'valorobra', 'onkeypress'=>'mascara(this,moeda)', 'class'=>"mdl-textfield__input"]) !!}
   {!! Form::label('valorobra', 'Valor da Construção', ['class'=>"mdl-textfield__label"]) !!}
 </div>
 

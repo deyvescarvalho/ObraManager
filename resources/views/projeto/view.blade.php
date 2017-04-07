@@ -32,7 +32,7 @@
       <h2 class="mdl-card__title-text">Cidade: {{$projeto->cidade}}</h2>
     </div>
     <div class="mdl-card__supporting-text">
-      <h2 class="mdl-card__title-text">Valor estimado: R$ {{number_format($projeto->valorobra, 2, ',', '.')}}</h2>
+      <h2 class="mdl-card__title-text">Valor estimado: R$ {{number_format(floatval($projeto->valorobra), 2, ',', '.')}}</h2>
     </div>
   </div>
 
@@ -78,7 +78,7 @@
             </tr>
           @endforeach
           <tr>
-            <td class="mdl-data-table__cell--5-non-numeric" colspan="5">Total: {{ number_format($somaQtd, 2, ',', '.' )}}</td>
+            <td class="mdl-data-table__cell--5-non-numeric" colspan="6">Total de itens: {{ number_format($somaQtd, 2, ',', '.' )}}</td>
             <td class="mdl-data-table__cell--1-non-numeric " colspan="1">Total: R$ {{ number_format($total, 2, ',', '.' )}}</td>
           </tr>
         </tbody>

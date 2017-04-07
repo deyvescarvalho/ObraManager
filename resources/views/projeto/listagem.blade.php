@@ -41,7 +41,7 @@
             <tr>
 
               <td class="mdl-data-table__cell--non-numeric ">{{$projeto->cliente->nome}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{ number_format($projeto->valorobra, 2, ',', '.')}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{ number_format(doubleval( $projeto->valorobra), 2, ',', '.')}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$projeto->endereco}} - {{ $projeto->cidade }}</td>
               <td id="viewProject{{print_r($count)}}" class="mdl-data-table__cell--non-numeric">
                 <a href="{{ route('projeto.view', ['id'=>$projeto->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
