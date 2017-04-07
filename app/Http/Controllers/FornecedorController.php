@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\FornecedorRequest;
 use App\Fornecedor;
 use App\User;
 
@@ -27,7 +27,7 @@ class FornecedorController extends Controller
       return view('fornecedor.cadastro');
     }
 
-    public function store(Request $request)
+    public function store(FornecedorRequest $request)
     {
       $this->fornecedor->create($request->all());
 
@@ -41,7 +41,7 @@ class FornecedorController extends Controller
       return view('fornecedor.edit', compact('fornecedor'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, FornecedorRequest $request)
     {
       $this->fornecedor->find($id)->update($request->all());
 
