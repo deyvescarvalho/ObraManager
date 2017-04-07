@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\ProjetoRequest;
 use App\Projeto;
 use App\Cliente;
 class ProjetoController extends Controller
@@ -40,15 +40,8 @@ class ProjetoController extends Controller
     return view('projeto.cadastro', compact('clientes'));
   }
 
-  public function store(Request $request)
+  public function store(ProjetoRequest $request)
   {
-
-    $this->validate($request, [
-      'endereco' => 'required',
-      // 'cliente' => 'required',
-      'cidade' => 'required',
-      'valorobra' => 'required'
-    ]);
 
     $this->projeto->create($request->all());
 
@@ -64,16 +57,8 @@ class ProjetoController extends Controller
     return view('projeto.edit', compact(['projeto', 'clientes']));
   }
 
-  public function update($id, Request $request)
+  public function update($id, ProjetoRequest $request)
   {
-
-    $this->validate($request, [
-      'endereco' => 'required',
-      // 'cliente' => 'required',
-      'cidade' => 'required',
-      'valorobra' => 'required'
-    ]);
-
     $this->projeto->find($id)->update($request->all());
 
     return redirect()->route('projeto.listagem')->with('status', 'Projeto alterado com sucesso!');
