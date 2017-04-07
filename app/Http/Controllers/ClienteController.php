@@ -2,36 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\ClienteRequest;
 use App\Cliente;
 
 class ClienteController extends Controller
 {
-  public function index()
+  private $cliente;
+
+  public function __construct(Cliente cliente)
   {
-    // return Cliente::all();
-
-    return view('cliente.index');
-
+    $this->cliente = cliente;
   }
 
-  public function store(Request $request)
+  public function index()
   {
-    $this->validate($request, [
-      'nome' => 'required',
-      'idade' => 'required|min:2|size:2',
-      'email' => 'email',
-      'cidade' => 'required'
-    ]);
+    return view('cliente.index');
+  }
 
-    Cliente::create($request->all());
+  public function store(ClienteRequest $request)
+  {
+    $this->cliente->create($request->all());
 
     return redirect()->route('cliente.novo')->with('status', 'Cliente cadastrado!');
   }
 
   public function clientes()
   {
-    $clientes = Cliente::paginate(10);
+    $clientes = $this->cliente->paginate(10);
 
     foreach ($clientes as $cliente) {
       $cpf = substr($cliente->cpf, 0,3) . '.';
@@ -46,30 +43,20 @@ class ClienteController extends Controller
 
   public function show($id)
   {
-    return Cliente::find($id);
+    return $this->cliente->find($id);
   }
 
   public function edit($id)
   {
-    // dd($id);
-    $cliente = Cliente::find($id);
+    $cliente = $this->cliente->find($id);
     return view('cliente.edit', compact('cliente'));
   }
 
-  public function update(Request $request, $id)
+  public function update(ClienteRequest $request, $id)
   {
 
-    $this->validate($request, [
-      'nome' => 'required',
-      'idade' => 'required|min:2|size:2',
-      'email' => 'email',
-      'cidade' => 'required'
-    ]);
-
-    Cliente::find($id)->update($request->all());
+    $this->cliente->find($id)->update($request->all());
     return redirect()->route('cliente.listagem')->with('status', 'Cliente alterado com sucesso!');
-
-    // return view('cliente.edit', compact('cliente'));
   }
 
   public function create()
@@ -80,7 +67,7 @@ class ClienteController extends Controller
   public function destroy($id)
   {
 
-    Cliente::find($id)->delete();
+    $this->cliente->find($id)->delete();
 
     return redirect()->route('cliente.listagem')->with('status', 'Cliente deletado com sucesso!');
   }
