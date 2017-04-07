@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\CargoRequest;
 use App\Cargo;
 class CargoController extends Controller
 {
@@ -25,10 +25,8 @@ class CargoController extends Controller
       return view('cargo.cadastro');
     }
 
-    public function store(Request $request)
+    public function store(CargoRequest $request)
     {
-
-
       $this->cargo->create($request->all());
 
       return redirect()->route('cargo.create')->with('status', 'Cargo cadastrada!');
@@ -41,7 +39,7 @@ class CargoController extends Controller
       return view('cargo.edit', compact('cargo'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, CargoRequest $request)
     {
       $this->cargo->find($id)->update($request->all());
 
