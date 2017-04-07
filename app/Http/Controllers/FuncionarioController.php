@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\FuncionarioRequest;
 use App\Funcionario;
 use App\Cargo;
 class FuncionarioController extends Controller
@@ -29,16 +29,8 @@ class FuncionarioController extends Controller
     return view('funcionario.cadastro', compact('cargos'));
   }
 
-  public function store(Request $request)
+  public function store(FuncionarioRequest $request)
   {
-    $this->validate($request, [
-      'nome' => 'required',
-      'idade' => 'required|min:2|size:2',
-      'email' => 'email',
-      'cidade' => 'required',
-      'cargo_id' => 'required'
-    ]);
-
     $this->funcionario->create($request->all());
 
     return redirect()->route('funcionario.create')->with('status', 'Funcionário cadastrado com sucesso!');
@@ -54,16 +46,8 @@ class FuncionarioController extends Controller
     return view('funcionario.edit', compact(['funcionario', 'cargos']));
   }
 
-  public function update($id, Request $request)
+  public function update($id, FuncionarioRequest $request)
   {
-    $this->validate($request, [
-      'nome' => 'required',
-      'idade' => 'required|min:2|size:2',
-      'email' => 'email',
-      'cidade' => 'required',
-      'cargo_id' => 'required'
-
-    ]);
 
     $this->funcionario->find($id)->update($request->all());
 
