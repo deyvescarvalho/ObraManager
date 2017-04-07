@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Http\ProdutoRequest;
 use App\Produto;
 use App\Categoria;
 class ProdutoController extends Controller
@@ -32,11 +32,9 @@ class ProdutoController extends Controller
       return view('produto.cadastro', compact('categorias'));
     }
 
-    public function store(Request $request)
+    public function store(ProdutoRequest $request)
     {
-      $this->validate($request, [
-        'descricao'=>'required'
-      ]);
+
       $this->produto->create($request->all());
 
       return redirect()->route('produto.create')->with('status', 'Produto cadastrado!');
@@ -52,7 +50,7 @@ class ProdutoController extends Controller
       return view('produto.edit', compact(['categorias', 'produto']));
     }
 
-    public function update($id, Request $request)
+    public function update($id, ProdutoRequest $request)
     {
       $this->produto->find($id)->update($request->all());
 
