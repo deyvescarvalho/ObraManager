@@ -9,9 +9,9 @@ class ClienteController extends Controller
 {
   private $cliente;
 
-  public function __construct(Cliente cliente)
+  public function __construct(Cliente $cliente)
   {
-    $this->cliente = cliente;
+    $this->cliente = $cliente;
   }
 
   public function index()
