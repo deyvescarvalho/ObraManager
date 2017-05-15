@@ -79,7 +79,7 @@ return [
     |
     */
 
-    'migrations' => 'public.migrations',
+    'migrations' => 'migrations',
 
     /*
     |--------------------------------------------------------------------------
