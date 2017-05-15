@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Cargo;
 class Funcionario extends Model
 {
+  protected $table = 'cargos';
     protected $fillable = [
       'nome',
       'cpf',
@@ -23,7 +24,7 @@ class Funcionario extends Model
 
     public function cargo()
     {
-      return $this->belongsTo(Cargo::class);
+      return $this->belongsTo(Cargo::class, 'cargos');
     }
 
     public function projetos()
