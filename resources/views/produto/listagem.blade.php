@@ -34,6 +34,7 @@
     </thead>
     <tbody>
       @foreach($produtos as $produto)
+        {{$produto->descricao}}
       <tr>
         <td class="mdl-data-table__cell--non-numeric ">{{$produto->descricao}}</td>
         <td class="mdl-data-table__cell--non-numeric ">{{$produto->categoria->descricao or 'Sem categoria'}}

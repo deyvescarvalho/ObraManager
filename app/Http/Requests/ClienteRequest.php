@@ -47,6 +47,6 @@ class ClienteRequest extends FormRequest
         'cidade.required' => 'Informe uma cidade válida!',
         'endereco.required' => 'Informe um endereço válido!'
       ];
-      
+
     }
 }

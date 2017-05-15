@@ -23,10 +23,10 @@ class ProdutoRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-          'descricao' => 'required',
-          'categoria_id' => 'required'
-        ];
+      return [
+        'descricao' => 'required',
+        'categoria_id' => 'required'
+      ];
     }
 
     public function messages()
