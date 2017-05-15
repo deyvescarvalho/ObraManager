@@ -37,7 +37,7 @@
         <tbody>
           @foreach($clientes as $cliente)
             <tr>
-              <td class="mdl-data-table__cell--non-numeric ">{{$cliente->nome}}</td>
+              <td class="mdl-data-table__cell--non-numeric ">{{ ucwords(strtolower($cliente->nome)) }}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->idade}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->dia}}/{{$cliente->mes}}/{{$cliente->ano}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->cpf}}</td>
