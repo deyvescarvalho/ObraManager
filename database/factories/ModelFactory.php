@@ -51,7 +51,7 @@ $factory->define(App\Cliente::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Cargo::class, function (Faker\Generator $faker) {
     return [
-        'descricao' => $faker->name
+        'descricao' => $faker->word
     ];
 });
 
@@ -74,17 +74,17 @@ $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
         'ano' => $faker->randomNumber(4),
         'cpf' => $faker->randomNumber(5),
         'idade' => $faker->randomNumber(2),
-        'cargo_id' => $faker->numberBetween(0, 10),
         'endereco'=> $faker->address,
         'cidade'=> $faker->city,
         'telefone'=> $faker->randomNumber(9),
-        'ddd'=> $faker->randomNumber(2)
+        'ddd'=> $faker->randomNumber(2),
+        'cargo_id' => $faker->numberBetween(0, 5)
     ];
 });
 
 $factory->define(App\Projeto::class, function (Faker\Generator $faker) {
     return [
-        'cliente_id'=> $faker->numberBetween(1, 10),
+        'cliente_id'=> $faker->numberBetween(1, 2),
         'endereco'=> $faker->address,
         'valorobra'=> $faker->randomFloat(2),
         'cidade'=> $faker->city

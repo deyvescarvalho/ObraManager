@@ -11,7 +11,7 @@ class FornecedorTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Fornecedor::truncate();
+        // App\Fornecedor::truncate();
         factory(Fornecedor::class,20)->create();
     }
 }

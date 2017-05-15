@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\ProjetoRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\ProjetoRequest;
 use App\Projeto;
 use App\Cliente;
 class ProjetoController extends Controller

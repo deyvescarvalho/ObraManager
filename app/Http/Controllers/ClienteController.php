@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\ClienteRequest;
+use Illuminate\Http\Request;
 use App\Cliente;
+use App\Http\Requests\ClienteRequest;
 
 class ClienteController extends Controller
 {
