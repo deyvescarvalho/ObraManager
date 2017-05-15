@@ -19,10 +19,10 @@ class CreateFuncionariosTable extends Migration
       $table->foreign('cargo_id')->references('id')->on('cargos')
             ->onUpdate('cascade')
             ->onDelete('set null');
-      // $table->integer('projeto_id')->unsidned()->nullable();
-      // $table->foreign('projeto_id')->references('id')->on('projetos')
-      //       ->onUpdate('cascade')
-      //       ->onDelete('set null');
+      $table->integer('projeto_id')->unsidned()->nullable();
+      $table->foreign('projeto_id')->references('id')->on('projetos')
+            ->onUpdate('cascade')
+            ->onDelete('set null');
       $table->string('nome');
       $table->string('dia');
       $table->string('mes');
