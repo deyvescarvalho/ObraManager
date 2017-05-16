@@ -26,8 +26,9 @@ class LancamentoProjetoController extends Controller
 
   public function store(Request $request)
   {
+    $trocas = array(".", ",");
     $projeto = Projeto::find($request->projeto_id);
-    $projeto->produtos()->attach([$request->produto_id => ['fornecedor_id' => $request->fornecedor_id, 'dataLancamento' => $request->dataLancamento, 'valorItem' => $request->valorItem, 'qtdItem' => $request->qtdItem]]);
+    $projeto->produtos()->attach([$request->produto_id => ['fornecedor_id' => $request->fornecedor_id, 'dataLancamento' => $request->dataLancamento, 'valorItem' => str_replace($trocas, "", $request->input('valorItem')), 'qtdItem' => $request->qtdItem]]);
 
     return redirect()->route('lancamento.create', ['id' => $request->projeto_id])->with('status', 'Item inserido com sucesso, você pode continuar a inserir mais itens. =]');
 

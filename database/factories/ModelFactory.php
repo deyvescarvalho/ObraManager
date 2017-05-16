@@ -78,7 +78,7 @@ $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
         'cidade'=> $faker->city,
         'telefone'=> $faker->randomNumber(9),
         'ddd'=> $faker->randomNumber(2),
-        'cargo_id' => $faker->numberBetween(0, 5)
+        'cargo_id' => $faker->numberBetween(1, 5)
     ];
 });
 

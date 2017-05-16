@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\CargoRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\CargoRequest;
 use App\Cargo;
 class CargoController extends Controller
 {

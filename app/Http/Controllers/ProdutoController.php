@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-// use Illuminate\Http\Request;
-use Illuminate\Http\ProdutoRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\ProdutoRequest;
 use App\Produto;
 use App\Categoria;
 class ProdutoController extends Controller

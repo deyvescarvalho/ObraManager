@@ -16,9 +16,6 @@ class CreateFuncionariosTable extends Migration
     Schema::create('funcionarios', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('cargo_id')->unsigned();
-      $table->foreign('cargo_id')->references('id')->on('cargos')
-      ->onUpdate('cascade')
-      ->onDelete('cascade');
       // $table->integer('projeto_id')->unsigned();
       // $table->foreign('projeto_id')->references('id')->on('projetos')
       // ->onUpdate('cascade')
@@ -35,8 +32,9 @@ class CreateFuncionariosTable extends Migration
       $table->string('cidade');
       $table->text('endereco');
       $table->timestamps();
-
-
+      $table->foreign('cargo_id')->references('id')->on('cargos')
+      ->onUpdate('cascade')
+      ->onDelete('cascade');
     });
   }
 

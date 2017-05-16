@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\FornecedorRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\FornecedorRequest;
 use App\Fornecedor;
 use App\User;
 

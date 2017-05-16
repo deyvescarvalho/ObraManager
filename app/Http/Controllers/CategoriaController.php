@@ -43,7 +43,7 @@ class CategoriaController extends Controller
       return view('categoria.edit', compact('categoria'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, CategoriaRequest $request)
     {
       $this->categoria->find($id)->update($request->all());
 
