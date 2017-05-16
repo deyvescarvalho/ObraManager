@@ -27,7 +27,7 @@ class CargoController extends Controller
       return view('cargo.cadastro');
     }
 
-    public function store(CargoRequest $request)
+    public function store(Request $request)
     {
       $this->cargo->create($request->all());
 
@@ -41,7 +41,7 @@ class CargoController extends Controller
       return view('cargo.edit', compact('cargo'));
     }
 
-    public function update($id, CargoRequest $request)
+    public function update($id, Request $request)
     {
       $this->cargo->find($id)->update($request->all());
 
