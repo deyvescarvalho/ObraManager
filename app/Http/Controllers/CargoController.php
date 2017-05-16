@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\CargoRequest;
 use App\Cargo;
+use App\Http\Requests\CargoRequest;
+
 class CargoController extends Controller
 {
   private $cargo;
