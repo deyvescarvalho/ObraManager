@@ -62,6 +62,8 @@ Route::group(['middleware' => 'auth'], function(){
 
   });
 
+  Route::get('pdf/cliente', ['as' => 'pdf.cliente', 'uses' => 'PdfClienteController@index']);
+
   Route::group(['as'=>'cargo.', 'prefix'=>'cargo'], function ()
   {
 
