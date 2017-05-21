@@ -8,6 +8,7 @@ class Produto extends Model
 {
     protected $fillable = [
       'descricao',
+      'user_id',
       'categoria_id'
     ];
 
@@ -19,6 +20,11 @@ class Produto extends Model
     public function projetos()
     {
       return $this->belongsToMany(Projeto::class, 'lancamento_projetos');
+    }
+
+    public function usuario()
+    {
+      return $this->belongsTo(User::class);
     }
     //
     // public function fornecedores()

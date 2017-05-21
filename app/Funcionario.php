@@ -9,6 +9,7 @@ class Funcionario extends Model
     protected $fillable = [
       'nome',
       'cpf',
+      'user_id',
       'email',
       'cargo_id',
       'idade',
@@ -23,11 +24,16 @@ class Funcionario extends Model
 
     public function cargo()
     {
-      return $this->belongsTo(Cargo::class, 'cargos');
+      return $this->belongsTo(Cargo::class);
     }
 
     public function projetos()
     {
       return $this->belongsToMany(Projeto::class, 'lancamento_projetos_funcionarios');
+    }
+
+    public function usuario()
+    {
+      return $this->belongsTo(User::class);
     }
 }

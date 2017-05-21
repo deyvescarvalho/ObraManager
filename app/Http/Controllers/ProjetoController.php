@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ProjetoRequest;
 use App\Projeto;
 use App\Cliente;
+use Auth;
 class ProjetoController extends Controller
 {
 
@@ -19,7 +20,7 @@ class ProjetoController extends Controller
 
   public function index()
   {
-    $projetos = $this->projeto->paginate(5);
+    $projetos = $this->projeto->where('id', Auth::getUser()->id)->paginate(5);
 
 
     return view('projeto.listagem', compact('projetos'));
@@ -43,8 +44,12 @@ class ProjetoController extends Controller
 
   public function store(ProjetoRequest $request)
   {
-
-    $this->projeto->create($request->all());
+    $this->projeto->user_id = Auth::getUser()->id;
+    $this->projeto->endereco = $request->input('endereco');
+    $this->projeto->cliente_id = $request->input('cliente_id');
+    $this->projeto->cidade = $request->input('cidade');
+    $this->projeto->valorobra = $request->input('valorobra');
+    $this->projeto->save();
 
     return redirect()->route('projeto.create')->with('status', 'Projeto criado com sucesso!');
   }
@@ -60,7 +65,12 @@ class ProjetoController extends Controller
 
   public function update($id, ProjetoRequest $request)
   {
-    $this->projeto->find($id)->update($request->all());
+    $this->projeto = $this->projeto->find($id);
+    $this->projeto->endereco = $request->input('endereco');
+    $this->projeto->cliente_id = $request->input('cliente_id');
+    $this->projeto->cidade = $request->input('cidade');
+    $this->projeto->valorobra = $request->input('valorobra');
+    $this->projeto->update();
 
     return redirect()->route('projeto.listagem')->with('status', 'Projeto alterado com sucesso!');
 

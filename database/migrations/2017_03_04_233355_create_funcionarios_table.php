@@ -16,10 +16,8 @@ class CreateFuncionariosTable extends Migration
     Schema::create('funcionarios', function (Blueprint $table) {
       $table->increments('id');
       $table->integer('cargo_id')->unsigned();
-      // $table->integer('projeto_id')->unsigned();
-      // $table->foreign('projeto_id')->references('id')->on('projetos')
-      // ->onUpdate('cascade')
-      // ->onDelete('cascade');
+      $table->integer('user_id')->unsigned();
+      $table->foreign('user_id')->references('id')->on('users');
       $table->string('nome');
       $table->string('dia');
       $table->string('mes');
