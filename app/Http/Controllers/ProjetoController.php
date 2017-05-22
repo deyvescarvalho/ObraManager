@@ -20,7 +20,7 @@ class ProjetoController extends Controller
 
   public function index()
   {
-    $projetos = $this->projeto->where('id', Auth::getUser()->id)->paginate(5);
+    $projetos = $this->projeto->where('user_id', Auth::getUser()->id)->paginate(10);
 
 
     return view('projeto.listagem', compact('projetos'));

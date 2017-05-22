@@ -45,7 +45,7 @@ class ClienteController extends Controller
   public function clientes()
   {
 
-    $clientes = $this->cliente->where('id', Auth::getUser()->id)->paginate(10);
+    $clientes = $this->cliente->where('user_id', Auth::getUser()->id)->Paginate(10);
 
     foreach ($clientes as $cliente) {
       $cpf = substr($cliente->cpf, 0,3) . '.';

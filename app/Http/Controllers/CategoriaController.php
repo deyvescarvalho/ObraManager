@@ -18,7 +18,7 @@ class CategoriaController extends Controller
 
     public function index()
     {
-      $categorias = $this->categoria->where('id', Auth::getUser()->id)->paginate(5);
+      $categorias = $this->categoria->where('user_id', Auth::getUser()->id)->paginate(10);
 
       return view('categoria.listagem', compact('categorias'));
     }

@@ -20,7 +20,7 @@ class ProdutoController extends Controller
 
     public function index()
     {
-      $produtos = $this->produto->where('id', Auth::getUser()->id)->paginate(15);
+      $produtos = $this->produto->where('user_id', Auth::getUser()->id)->paginate(10);
 
 
       return view('produto.listagem', compact('produtos'));

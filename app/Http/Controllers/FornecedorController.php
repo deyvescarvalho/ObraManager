@@ -17,7 +17,7 @@ class FornecedorController extends Controller
 
     public function index()
     {
-      $fornecedores = $this->fornecedor->where('id', Auth::getUser()->id)->paginate(10);
+      $fornecedores = $this->fornecedor->where('user_id', Auth::getUser()->id)->Paginate(10);
       return view('fornecedor.listagem', compact(['fornecedores', 'user']));
     }
 

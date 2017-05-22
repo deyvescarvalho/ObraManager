@@ -21,7 +21,7 @@ class FuncionarioController extends Controller
   public function index()
   {
 
-    $funcionarios = $this->funcionario->where('id', Auth::getUser()->id)->paginate(5);
+    $funcionarios = $this->funcionario->where('user_id', Auth::getUser()->id)->paginate(10);
     return view('funcionario.listagem', compact('funcionarios'));
 
   }

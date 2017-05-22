@@ -17,7 +17,7 @@ class CargoController extends Controller
 
     public function index()
     {
-      $cargos = $this->cargo->where('id', Auth::getUser()->id)->paginate(5);
+      $cargos = $this->cargo->where('user_id', Auth::getUser()->id)->paginate(10);
 
       return view('cargo.listagem', compact('cargos'));
     }
