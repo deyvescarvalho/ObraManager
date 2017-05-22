@@ -22,6 +22,15 @@ class DatabaseSeeder extends Seeder
               'remember_token' => str_random(10),
           ]
         );
+        factory('App\User')->create(
+          [
+              'name' => 'Fulando',
+              'email' => 'fulando@gmail.com',
+              // 'password' => bcrypt('secret'),
+              'password' => bcrypt('123456'),
+              'remember_token' => str_random(10),
+          ]
+        );
         // $this->call(PostsTableSeeder::class);
         $this->call(ClienteTableSeeder::class);
         $this->call(CargoTableSeeder::class);

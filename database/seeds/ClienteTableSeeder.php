@@ -14,6 +14,6 @@ class ClienteTableSeeder extends Seeder
     public function run()
     {
       // App\Cliente::truncate();
-      factory('App\Cliente',10)->create();
+      factory('App\Cliente',20)->create();
     }
 }
