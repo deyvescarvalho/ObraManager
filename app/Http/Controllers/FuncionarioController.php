@@ -28,7 +28,7 @@ class FuncionarioController extends Controller
 
   public function create()
   {
-    $cargos = Cargo::all();
+    $cargos = Cargo::where('user_id', Auth::getUser()->id)->get();
     return view('funcionario.cadastro', compact('cargos'));
   }
 

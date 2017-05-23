@@ -48,7 +48,7 @@ class CargoController extends Controller
 
     public function cargosJson()
     {
-      $cargos = $this->cargo->orderBy('descricao', 'asc')->get(['id', 'descricao']);
+      $cargos = $this->cargo->where('user_id', Auth::getUser()->id)->orderBy('descricao', 'asc')->get(['id', 'descricao']);
       return Response::json($cargos);
     }
 
