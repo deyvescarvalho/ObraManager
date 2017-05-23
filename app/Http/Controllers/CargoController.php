@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Cargo;
 use App\Http\Requests\CargoRequest;
 use Auth;
+use Response;
 class CargoController extends Controller
 {
   private $cargo;
@@ -33,7 +34,22 @@ class CargoController extends Controller
       $this->cargo->user_id = Auth::getUser()->id;
       $this->cargo->save();
 
-      return redirect()->route('cargo.create')->with('status', 'Cargo cadastrada!');
+      return redirect()->route('cargo.create')->with('status', 'Cargo cadastrado!');
+    }
+
+    public function storeDinamico(Request $request)
+    {
+      $this->cargo->descricao = $request->input('descricao');
+      $this->cargo->user_id = Auth::getUser()->id;
+      $this->cargo->save();
+
+      return redirect()->route('funcionario.create')->with('status', 'Cargo cadastrado!');
+    }
+
+    public function cargosJson()
+    {
+      $cargos = $this->cargo->orderBy('descricao', 'asc')->get(['id', 'descricao']);
+      return Response::json($cargos);
     }
 
     public function edit($id)
