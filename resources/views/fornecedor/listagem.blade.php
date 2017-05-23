@@ -22,7 +22,7 @@
     <i class="material-icons">add</i>
   </a> Novo fornecedor
 @if (count($fornecedores) > 0)
-  <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
+  <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">
     <thead>
       <tr>
         <th class="mdl-data-table__header--sorted-ascending mdl-data-table__cell--non-numeric">Descrição</th>
@@ -33,9 +33,20 @@
     </thead>
     <tbody>
       @foreach($fornecedores as $fornecedor)
-      <tr>
+        <div class="mdl-cell mdl-cell--12-col-phone demo-card-square mdl-card mdl-shadow--2dp mdl-cell--hide-desktop">
+          <div class="mdl-card__title ">
+            <span><i class="material-icons md-light md-48">person</i></span>
+            <h2 class="mdl-card__title-text"> {{ strtoupper($fornecedor->descricao) }}</h2>
+          </div>
+          <div class="mdl-card__supporting-text ">
+            <p class="mdl-card__title-text">Telefone: ({{$fornecedor->ddd}}) - {{$fornecedor->telefone}}</p>
+            <p class="mdl-card__title-text">Endereço: {{$fornecedor->endereco}} </p>
+          </div>
+        </div>
+
+      <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
         <td class="mdl-data-table__cell--non-numeric ">{{$fornecedor->descricao}}</td>
-        <td class="mdl-data-table__cell--non-numeric ">{{ $fornecedor->telefone}}</td>
+        <td class="mdl-data-table__cell--non-numeric ">({{$fornecedor->ddd}}) - {{ $fornecedor->telefone}}</td>
         <td class="mdl-data-table__cell--non-numeric ">{{ $fornecedor->endereco}}</td>
         <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('fornecedor.edit', ['id'=>$fornecedor->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">edit</i></a></td>
         <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('fornecedor.destroy', ['id'=>$fornecedor->id]) }}" onClick="return confirm('Deseja realmente deletar a fornecedor ?')" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">delete</i></a></td>

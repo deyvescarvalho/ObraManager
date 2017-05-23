@@ -23,7 +23,7 @@
     </a> Novo cargo
     @if (count($cargos) > 0)
 
-      <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
+      <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">
         <thead>
           <tr>
             <th class="mdl-data-table__header--sorted-ascending mdl-data-table__cell--non-numeric">Descrição</th>
@@ -32,7 +32,15 @@
         </thead>
         <tbody>
           @foreach($cargos as $cargo)
-            <tr>
+            <div class="mdl-cell mdl-cell--12-col-phone demo-card-square mdl-card mdl-shadow--2dp mdl-cell--hide-desktop">
+              <div class="mdl-card__title ">
+                <span><i class="material-icons md-light md-48">local_library</i></span>
+                <h2 class="mdl-card__title-text"> {{ strtoupper($cargo->descricao) }}</h2>
+              </div>
+
+            </div>
+
+            <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
               <td class="mdl-data-table__cell--non-numeric ">{{$cargo->descricao}}</td>
               <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('cargo.edit', ['id'=>$cargo->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">edit</i></a></td>
               <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('cargo.destroy', ['id'=>$cargo->id]) }}" onClick="return confirm('Deseja realmente deletar o cargo ?')" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">delete</i></a></td>
