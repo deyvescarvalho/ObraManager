@@ -72,7 +72,7 @@
 
 </div>
 <button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab showw-modal"><i class="material-icons">add</i></button>
-{!! Form::close() !!}
+{{-- {!! Form::close() !!} --}}
 <dialog class="mdl-dialog">
   <div class="mdl-dialog__content">
     <p>
