@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Projeto;
+use App\Funcionario;
+use App\Cliente;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('cliente.index');
+        $totalProjetos = Projeto::all()->count();
+        $totalFuncionario = Funcionario::all()->count();
+        $totalCliente = Cliente::all()->count();
+        return view('cliente.index', compact('totalProjetos', 'totalFuncionario', 'totalCliente'));
     }
 }
