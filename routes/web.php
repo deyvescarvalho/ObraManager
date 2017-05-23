@@ -71,7 +71,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('novo', ['as'=>'create', 'uses'=>'CargoController@create']);
 
-    Route::post('novo', ['as'=>'store', 'uses'=>'CargoController@store']);
+    Route::post('novo', ['as'=>'storeDinamico', 'uses'=>'CargoController@storeDinamico']);
+    Route::post('novo/dinamico', ['as'=>'store', 'uses'=>'CargoController@store']);
+    Route::get('ajax', ['as'=>'ajax', 'uses'=>'CargoController@cargosJson']);
 
 
     Route::get('edit/{id}', ['as' => 'edit', 'uses'=>'CargoController@edit']);
