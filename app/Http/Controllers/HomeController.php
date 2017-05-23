@@ -25,9 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $totalProjetos = Projeto::all()->count();
-        $totalFuncionario = Funcionario::all()->count();
-        $totalCliente = Cliente::all()->count();
+        $totalProjetos = Projeto::where('user_id', Auth::getUser()->id)->count();
+        $totalFuncionario = Funcionario::where('user_id', Auth::getUser()->id)->count();
+        $totalCliente = Cliente::where('user_id', Auth::getUser()->id)->count();
         return view('cliente.index', compact('totalProjetos', 'totalFuncionario', 'totalCliente'));
     }
 }
