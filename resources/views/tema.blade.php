@@ -120,19 +120,11 @@
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
             <li class="mdl-menu__item">{{ $user->email }}</li>
             <a href="{{route('auth.logout')}}"> <li class="mdl-menu__item">  Sair </li> </a>
-            {{-- <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li> --}}
-            {{-- <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a> --}}
           </ul>
         </div>
       </header>
       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
         <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">dashboard</i>Principal</a>
-        {{-- <a class="mdl-navigation__link" href="/cliente/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Clientes</a>
-        <a class="mdl-navigation__link" href="/categoria/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Categoria</a>
-        <a class="mdl-navigation__link" href="/produto/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Produto</a>
-        <a class="mdl-navigation__link" href="/funcionario/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Funcionário</a>
-        <a class="mdl-navigation__link" href="/fornecedor/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Fornecedor</a>
-        <a class="mdl-navigation__link" href="/projeto/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Projetos</a> --}}
         <a class="mdl-navigation__link" href="/cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Clientes</a>
         <a class="mdl-navigation__link" href="/fornecedor"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Fornecedores</a>
         <a class="mdl-navigation__link" href="/funcionario"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Funcionários</a>
@@ -140,7 +132,6 @@
         <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Produtos</a>
         <a class="mdl-navigation__link" href="/cargo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Profissões</a>
         <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Projetos</a>
-
       </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
@@ -196,11 +187,11 @@
       </g>
     </defs>
   </svg>
-
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script> --}}
 <script src="/js/mascara_moeda.js" charset="utf-8"></script>
 
 </body>
