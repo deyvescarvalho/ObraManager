@@ -62,7 +62,6 @@
   <span class="mdl-textfield__error">Digite um DDD válido contendo apenas números!</span>
 </div>
 
-
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--5-col">
   <select class="mdl-textfield__input" name="cargo_id">
     <option value="">Selecione uma profissão</option>
@@ -72,3 +71,73 @@
   </select>
 
 </div>
+<button type="button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab showw-modal"><i class="material-icons">add</i></button>
+{!! Form::close() !!}
+<dialog class="mdl-dialog">
+  <div class="mdl-dialog__content">
+    <p>
+      Cadastro de profissão
+    </p>
+  </div>
+
+  {{-- {!! Form::open(['route'=> 'cargo.storeDinamico', 'method'=>'post']) !!} --}}
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
+    {!! Form::text('descricao', null, ['class'=>'mdl-textfield__input', 'maxLength'=>'20']) !!}
+    {!! Form::label('descricao', 'Descrição ', ['class'=>'mdl-textfield__label']) !!}
+    <span class="mdl-textfield__error">Digite uma descrição para a profissão!</span>
+  </div>
+
+  {{-- @include('cargo.form') --}}
+  <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
+    <button type='button' id="cadastrarAjax" class='mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect'>Enviar</button>
+
+    {{-- {!! Form::submit('Enviar', ['id'=>'cadastroAjax', 'class'=>'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect']) !!} --}}
+  </div>
+</div>
+
+{{-- {!! Form::close() !!} --}}
+
+</dialog>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+var dialog = document.querySelector('dialog');
+var showModalButton = document.querySelector('.showw-modal');
+if (! dialog.showModal) {
+  dialogPolyfill.registerDialog(dialog);
+}
+$(showModalButton).click(function(){
+
+  dialog.showModal();
+});
+// showModalButton.addEventListener('click', function() {
+// });
+// $(dialog).('close').click(function(){
+//
+// });
+// dialog.querySelector('.close').addEventListener('click', function() {
+//   dialog.close();
+// });
+// $.ajaxSetup({
+//   headers: {
+//     'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+//   }
+// });
+$("#cadastrarAjax").click(function(){
+  var descricao = $('descricao').val();
+  $.post("/cargo/novo/dinamico",
+  {
+    descricao: $('input[name=descricao]').val()
+  },
+  function(data, status){
+    // alert("Data: " + data + "\nStatus: " + status);
+    dialog.close();
+    $('select[name=cargo_id]').empty();
+    $.get('/cargo/ajax', function(cargos){
+      $.each(cargos, function(key, value){
+        $('select[name=cargo_id]').append('<option value=' + value.id + '>' + value.descricao + '</option>');
+      });
+    });
+  }
+)});
+  </script>
