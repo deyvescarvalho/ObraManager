@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Projeto;
 use App\Funcionario;
 use App\Cliente;
+use Auth;
 class HomeController extends Controller
 {
     /**
