@@ -72,7 +72,7 @@
 </style>
 <div class="mdl-js-layout mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid mdl-grid--no-spacing">
 
-  <div class=" mdl-cell mdl-cell--3-col">
+  <div class=" mdl-cell mdl-cell--3-col mdl-cell mdl-cell--12-col-phone">
     <div class="info-box">
       <span class="bg-aqua info-box-icon"><i class="material-icons md-48 md-light">assignment_ind</i></span>
 
@@ -84,7 +84,7 @@
     </div>
     <!-- /.info-box -->
   </div>
-  <div class=" mdl-cell--1-offset mdl-cell mdl-cell--3-col">
+  <div class=" mdl-cell--1-offset-desktop mdl-cell mdl-cell--3-col mdl-cell mdl-cell--12-col-phone">
     <div class="info-box">
       <span class="bg-aqua info-box-icon"><i class="material-icons md-48 md-light">assignment_ind</i></span>
 
@@ -97,7 +97,7 @@
     <!-- /.info-box -->
   </div>
 
-  <div class=" mdl-cell--1-offset mdl-cell mdl-cell--3-col ">
+  <div class=" mdl-cell--1-offset-desktop mdl-cell mdl-cell--3-col mdl-cell mdl-cell--12-col-phone">
     <div class="info-box">
       <span class="bg-aqua info-box-icon"><i class="material-icons md-48 md-light ">&#xE85C;</i></span>
 
