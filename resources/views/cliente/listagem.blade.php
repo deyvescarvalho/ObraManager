@@ -45,7 +45,7 @@
               </div>
               <div class="mdl-card__supporting-text ">
                 <p class="mdl-card__title-text">Idade: {{$cliente->idade}}</p>
-                <p class="mdl-card__title-text">Dt. Nasc: {{$cliente->dia}}/{{$cliente->mes}}/{{$cliente->ano}}</p>
+                <p class="mdl-card__title-text">Dt. Nasc: {{ date('d/m/Y', strtotime($cliente->dtNascimento))}}</p>
                 <p class="mdl-card__title-text">CPF: {{$cliente->cpf or 'Sem CPF'}}</p>
                 <p class="mdl-card__title-text">Telefone: ({{$cliente->ddd}}) - {{$cliente->telefone}}</p>
               </div>
@@ -54,7 +54,7 @@
             <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
               <td class="mdl-data-table__cell--non-numeric ">{{ ucwords(strtolower($cliente->nome)) }}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->idade}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{$cliente->dia}}/{{$cliente->mes}}/{{$cliente->ano}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{ date('d/m/Y', strtotime($cliente->dtNascimento))}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->cpf}}</td>
               <td class="mdl-data-table__cell--non-numeric">({{$cliente->ddd}}) - {{$cliente->telefone}}</td>
               <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('cliente.edit', ['id'=>$cliente->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">edit</i></a></td>

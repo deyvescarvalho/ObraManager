@@ -49,7 +49,7 @@
               </div>
               <div class="mdl-card__supporting-text ">
                 <p class="mdl-card__title-text">Idade: {{$funcionario->idade}}</p>
-                <p class="mdl-card__title-text">Dt. Nasc: {{$funcionario->dia}}/{{$funcionario->mes}}/{{$funcionario->ano}}</p>
+                <p class="mdl-card__title-text">Dt. Nasc: {{date('d/m/Y', strtotime($funcionario->dtNascimento))}}</p>
                 <p class="mdl-card__title-text">Profissão: {{$funcionario->cargo->descricao or 'Sem profissão'}}</p>
                 <p class="mdl-card__title-text">CPF: {{$funcionario->cpf or 'Sem CPF'}}</p>
                 <p class="mdl-card__title-text">Telefone: ({{$funcionario->ddd}}) - {{$funcionario->telefone}}</p>
@@ -59,7 +59,7 @@
             <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
               <td class="mdl-data-table__cell--non-numeric ">{{$funcionario->nome}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$funcionario->idade}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{$funcionario->dia}}/{{$funcionario->mes}}/{{$funcionario->ano}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{date('d/m/Y', strtotime($funcionario->dtNascimento))}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$funcionario->cpf}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$funcionario->cargo->descricao or 'Sem profissão'}}</td>
               <td class="mdl-data-table__cell--non-numeric">({{$funcionario->ddd}}) - {{$funcionario->telefone}}</td>
