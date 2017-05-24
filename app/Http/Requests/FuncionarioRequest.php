@@ -27,6 +27,7 @@ class FuncionarioRequest extends FormRequest
           'nome' => 'required',
           'idade' => 'required|min:2|size:2',
           'email' => 'email',
+          'dtNascimento' => 'date',
           'cidade' => 'required',
           'cargo_id' => 'required'
         ];
@@ -37,6 +38,7 @@ class FuncionarioRequest extends FormRequest
       return [
         'nome.required' => 'Atenção! Informe um nome!',
         'idade.required' => 'Atenção! Informe uma idade!',
+        'dtNascimento.required' => 'Informe uma data de nascimento válida!',
         'idade.min' => 'Atenção! A quantidade mínima de caracteres é 2.',
         'idade.size' => 'Atenção! A quantidade mínima de caracteres é 2.',
         'email.email' => 'Atenção! Informe um e-mail válido!',

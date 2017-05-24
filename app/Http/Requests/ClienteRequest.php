@@ -28,9 +28,9 @@ class ClienteRequest extends FormRequest
             'cpf' => 'required|min:11|max:11',
             'email' => 'email',
             'idade' => 'nullable',
-            'dia' => 'nullable',
-            'mes' => 'nullable',
-            'ano' => 'nullable',
+            'dtNascimento' => 'required',
+            // 'mes' => 'nullable',
+            // 'ano' => 'nullable',
             'telefone' => 'required',
             'cidade' => 'required',
             'endereco' => 'required'
@@ -42,6 +42,7 @@ class ClienteRequest extends FormRequest
       return [
         'nome.required' => 'Informe um nome válido!',
         'nome.max' => 'A quantidade de caracteres, deve ser inferior a 30',
+        'dtNascimento.required' => 'Informe uma data de nascimento válida',
         'email.email' => 'Informe um e-mail válido',
         'telefone.required' => 'Informe um telefone válido!',
         'cidade.required' => 'Informe uma cidade válida!',
