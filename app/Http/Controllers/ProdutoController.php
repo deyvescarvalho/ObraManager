@@ -28,7 +28,7 @@ class ProdutoController extends Controller
 
     public function create()
     {
-      $categorias = $this->categoria->all();
+      $categorias = $this->categoria->where('user_id', Auth::getUser()->id)->get();
 
       return view('produto.cadastro', compact('categorias'));
     }
@@ -47,7 +47,7 @@ class ProdutoController extends Controller
     public function edit($id)
     {
 
-      $categorias = $this->categoria->all();
+      $categorias = $this->categoria->where('user_id', Auth::getUser()->id)->get();
 
       $produto = $this->produto->find($id);
 

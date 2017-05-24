@@ -58,7 +58,7 @@ class ProjetoController extends Controller
   {
 
     $projeto = $this->projeto->find($id);
-    $clientes = Cliente::all();
+    $clientes = Cliente::where('user_id', Auth::getUser()->id)->get();
 
     return view('projeto.edit', compact(['projeto', 'clientes']));
   }

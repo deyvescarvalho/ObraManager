@@ -59,7 +59,7 @@ class FuncionarioController extends Controller
 
   public function edit($id)
   {
-    $cargos = Cargo::all();
+    $cargos = Cargo::where('user_id', Auth::getUser()->id)->get();
 
     $funcionario = $this->funcionario->with('cargo')->find($id);
 
