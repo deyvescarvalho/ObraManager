@@ -46,14 +46,14 @@
                 <h2 class="mdl-card__title-text"> {{ strtoupper($projeto->cliente->nome) }}</h2>
               </div>
               <div class="mdl-card__supporting-text ">
-                <p class="mdl-card__title-text">Valor: {{ number_format(doubleval( $projeto->valorobra), 2, ',', '.')}}</p>
+                <p class="mdl-card__title-text">Valor: {{number_format($projeto->valorobra, 2, ',', '.')}}</p>
                 <p class="mdl-card__title-text">Endereço: {{$projeto->endereco}} - {{ $projeto->cidade }}</p>
               </div>
             </div>
 
             <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
               <td class="mdl-data-table__cell--non-numeric ">{{$projeto->cliente->nome}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{ number_format(doubleval( $projeto->valorobra), 2, ',', '.')}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{ number_format($projeto->valorobra, 2, ',', '.')}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$projeto->endereco}} - {{ $projeto->cidade }}</td>
               <td id="viewProject{{print_r($count)}}" class="mdl-data-table__cell--non-numeric">
                 <a href="{{ route('projeto.view', ['id'=>$projeto->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
