@@ -8,7 +8,13 @@
   {!! Form::label('idade', 'Idade', ['class'=>"mdl-textfield__label"]) !!}
 </div>
 
-<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col">
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col{{ $errors->has('dtNascimento') ? ' has-error' : '' }}">
+    {!! Form::label('dtNascimento', 'Data de nascimento') !!}
+    {!! Form::date('dtNascimento', null, ['class'=>"mdl-textfield__input", 'required' => 'required']) !!}
+    <small class="mdl-textfield__error">{{ $errors->first('dtNascimento') }}</small>
+</div>
+
+{{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--2-col">
   {!! Form::text('dia', null, ['class'=>"mdl-textfield__input", 'min'=>"1", 'max'=>"31", 'maxLength'=>"2", 'pattern'=>"-?[0-9]*(\.[0-9]+)?"]) !!}
   {!! Form::label('dia', 'dd', ['class'=>"mdl-textfield__label"]) !!}
   <span class="mdl-textfield__error">Digite um dia de nascimento válido</span>
@@ -23,7 +29,7 @@
   {!! Form::text('ano', null, ['class'=>'mdl-textfield__input', 'maxLength'=>'4', 'min'=>'1950', 'max'=>'2017', 'pattern'=>'-?[0-9]*(\.[0-9]+)?']) !!}
   {!! Form::label('ano', 'yyyy', ['class'=>'mdl-textfield__label']) !!}
   <span class="mdl-textfield__error">Digite um ano de nascimento válido</span>
-</div>
+</div> --}}
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col">
   {!! Form::email('email', null, ['class'=>"mdl-textfield__input"]) !!}
   {!! Form::label('email', 'Email', ['class'=>"mdl-textfield__label"]) !!}
