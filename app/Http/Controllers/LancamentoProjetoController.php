@@ -56,6 +56,16 @@ class LancamentoProjetoController extends Controller
 
   }
 
+  public function removeItem($id, $idItem)
+  {
+    $projeto = Projeto::find($id);
+
+    $projeto->produtos()->detach([$idItem]);
+
+    return redirect()->route('projeto.view', ['id' => $id])->with('status', 'Item removido com sucesso!');
+
+  }
+
 
 
 
