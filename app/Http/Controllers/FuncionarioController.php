@@ -37,9 +37,7 @@ class FuncionarioController extends Controller
     $this->funcionario->user_id = Auth::getUser()->id;
     $this->funcionario->nome = $request->input('nome');
     $this->funcionario->idade = $request->input('idade');
-    $this->funcionario->dia = $request->input('dia');
-    $this->funcionario->mes = $request->input('mes');
-    $this->funcionario->ano = $request->input('ano');
+    $this->funcionario->dtNascimento = $request->input('dtNascimento');
     $this->funcionario->email = $request->input('email');
     $this->funcionario->cpf = $request->input('cpf');
     $this->funcionario->ddd = $request->input('ddd');

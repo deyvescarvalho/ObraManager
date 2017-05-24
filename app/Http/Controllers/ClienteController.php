@@ -23,12 +23,12 @@ class ClienteController extends Controller
 
   public function store(ClienteRequest $request)
   {
-
     $this->cliente->user_id = Auth::getUser()->id;
     $this->cliente->nome = $request->input('nome');
-    $this->cliente->dia = $request->input('dia');
-    $this->cliente->mes = $request->input('mes');
-    $this->cliente->ano = $request->input('ano');
+    $this->cliente->dtNascimento = $request->input('dtNascimento');
+    // $this->cliente->dia = $request->input('dia');
+    // $this->cliente->mes = $request->input('mes');
+    // $this->cliente->ano = $request->input('ano');
     $this->cliente->cpf = $request->input('cpf');
     $this->cliente->email = $request->input('email');
     $this->cliente->idade = $request->input('idade');
