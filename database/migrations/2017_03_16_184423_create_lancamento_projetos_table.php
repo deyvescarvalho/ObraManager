@@ -28,8 +28,8 @@ class CreateLancamentoProjetosTable extends Migration
               ->onUpdate('cascade')
               ->onDelete('set null');
             $table->string('dataLancamento');
-            $table->float('valorItem', 15, 4);
-            $table->float('qtdItem', 15, 4);
+            $table->float('valorItem', 15, 0);
+            $table->float('qtdItem', 15, 0);
             // $table->float('total');
         });
 

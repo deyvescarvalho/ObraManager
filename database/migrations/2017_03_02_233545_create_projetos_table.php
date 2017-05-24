@@ -23,7 +23,7 @@ class CreateProjetosTable extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('cidade');
-            $table->string('valorobra');
+            $table->float('valorobra', 15,0);
             $table->timestamps();
         });
     }
