@@ -44,11 +44,15 @@ class ProjetoController extends Controller
 
   public function store(ProjetoRequest $request)
   {
+    $trocas = array(".", ",");
     $this->projeto->user_id = Auth::getUser()->id;
     $this->projeto->endereco = $request->input('endereco');
     $this->projeto->cliente_id = $request->input('cliente_id');
     $this->projeto->cidade = $request->input('cidade');
-    $this->projeto->valorobra = $request->input('valorobra');
+    // dd($request->input('valorobra'));
+    $this->projeto->valorobra = str_replace($trocas, "", $request->input('valorobra'));
+    $this->projeto->valorobra = substr($this->projeto->valorobra, 0, -2);
+    // dd($this->projeto->valorobra);
     $this->projeto->save();
 
     return redirect()->route('projeto.create')->with('status', 'Projeto criado com sucesso!');
