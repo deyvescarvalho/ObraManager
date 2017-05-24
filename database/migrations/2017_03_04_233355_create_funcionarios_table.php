@@ -19,9 +19,10 @@ class CreateFuncionariosTable extends Migration
       $table->integer('user_id')->unsigned();
       $table->foreign('user_id')->references('id')->on('users');
       $table->string('nome');
-      $table->string('dia');
-      $table->string('mes');
-      $table->string('ano');
+      $table->date('dtNascimento');
+      // $table->string('dia');
+      // $table->string('mes');
+      // $table->string('ano');
       $table->string('cpf');
       $table->string('email');
       $table->string('idade');
