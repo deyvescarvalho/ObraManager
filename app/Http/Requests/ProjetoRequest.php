@@ -25,9 +25,9 @@ class ProjetoRequest extends FormRequest
     {
         return [
           'cliente_id' => 'required',
-          'endereco' => 'required',
+          'endereco' => 'required|min:5|max:40',
           'cidade' => 'required',
-          'valorobra' => 'required'
+          'valorobra' => 'required|max:15'
         ];
     }
 
@@ -35,9 +35,12 @@ class ProjetoRequest extends FormRequest
     {
       return [
         'cliente_id.required' => 'Informe um cliente!',
-        'endereco.required' => 'Informe um endereço!',
-        'cidade' => 'Informe uma cidade!',
-        'valorobra' => 'Informe um valor previsto para o projeto!'
+        'endereco.required' => 'Informe um endereço válido!',
+        'endereco.min' => 'Informe um endereço com no mínimo 5 caracteres!',
+        'endereco.max' => 'Informe um endereço com no máximo 40 caracteres!',
+        'cidade.required' => 'Informe uma cidade válida!',
+        'valorobra.max' => 'Informe um valor com no máximo 15 caracteres!',
+        'valorobra.required' => 'Informe um valor previsto para o projeto!'
       ];
     }
 }

@@ -24,7 +24,7 @@ class ProdutoRequest extends FormRequest
     public function rules()
     {
       return [
-        'descricao' => 'required',
+        'descricao' => 'required|max:15',
         'categoria_id' => 'required'
       ];
     }
@@ -33,6 +33,7 @@ class ProdutoRequest extends FormRequest
     {
       return [
         'descricao.required' => 'Atenção, informe uma descrição para o produto.',
+        'descricao.max' => 'Atenção, o campo descrição deve conter no máximo 15 caracteres.',
         'categoria_id.required' => 'Atenção, informe uma categoria para o produto'
       ];
     }
