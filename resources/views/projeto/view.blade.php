@@ -20,7 +20,31 @@
   color: #9C9C9C !important;
 }
 </style>
+
+
+
 @section('conteudo')
+  @if (count($errors) > 0)
+    <ul>
+      @foreach ($errors->all() as $error)
+      <li class="alert">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+
+        {{ $error }}
+      </li>
+      @endforeach
+    </ul>
+  @endif
+
+  @if (session('status'))
+
+  <div class="alert success">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    {{ session('status') }}
+
+  </div>
+  @endif
+
   <div class="demo-card-wide mdl-card mdl-shadow--2dp">
     <div class="mdl-card__supporting-text">
       <h2 class="mdl-card__title-text">Cliente: {{$projeto->cliente->nome}}</h2>
@@ -103,6 +127,9 @@
 
         <div class="mdl-cell mdl-cell--4-col mdl-cell--12-col-phone">
           <div class="mdl-card mdl-shadow--2dp">
+            <a href="{{ route('lancamento.removefuncionario', ['id'=>$projeto->id, 'funcionario_id' => $funcionario->id]) }}" onClick="return confirm('Deseja realmente remover o funcionário ?')" class="exclusaoFuncionario mdl-button mdl-js-button mdl-button--icon mdl-button">
+              <i class="material-icons">clear</i>
+            </a>
             <img class="mdl-chip__contact" src="/images/user_icon.png">
             <div class="mdl-card__title mdl-card--expand">
               Nome: {{ $funcionario->nome}}
@@ -141,6 +168,12 @@
       float: left;
       padding: 8px 16px;
       text-decoration: none;
+    }
+
+    .exclusaoFuncionario {
+      position: absolute;
+      right: 0;
+      color: red;
     }
 
     </style>

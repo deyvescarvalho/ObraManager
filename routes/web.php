@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('/lancamento', ['as'=>'lancamento.store', 'uses'=>'LancamentoProjetoController@store']);
   Route::post('/lancamento/funcionario', ['as'=>'lancamento.lancaFuncionario', 'uses'=>'LancamentoProjetoController@lancaFuncionario']);
   Route::get('/lancamento/{id}', ['as'=>'lancamento.create', 'uses'=>'LancamentoProjetoController@create']);
+  Route::get('/lancamento/{id}/remove-funcionario/{funcionario_id}', ['as'=>'lancamento.removefuncionario', 'uses'=>'LancamentoProjetoController@removeFuncionario']);
 
 
   Route::get('/', 'ClienteController@index');

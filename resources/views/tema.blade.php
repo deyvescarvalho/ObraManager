@@ -128,10 +128,10 @@
         <a class="mdl-navigation__link" href="/cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Clientes</a>
         <a class="mdl-navigation__link" href="/fornecedor"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Fornecedores</a>
         <a class="mdl-navigation__link" href="/funcionario"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Funcionários</a>
-        <a class="mdl-navigation__link" href="/categoria"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Categorias</a>
-        <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Produtos</a>
-        <a class="mdl-navigation__link" href="/cargo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Profissões</a>
-        <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Projetos</a>
+        <a class="mdl-navigation__link" href="/categoria"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">speaker_notes</i>Categorias</a>
+        <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Produtos</a>
+        <a class="mdl-navigation__link" href="/cargo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assistant</i>Profissões</a>
+        <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">business</i>Projetos</a>
       </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
