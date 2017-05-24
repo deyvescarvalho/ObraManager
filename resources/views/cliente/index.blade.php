@@ -7,24 +7,13 @@
 
 @section('conteudo')
 <style media="screen">
-.contadores{
-  background: #ccc;
-  text-align: center;
-  padding: 5px;
-  border-radius: 100px;
-  border-style: none;
-}
-.contadores > span, p{
-  margin: 20px;
-  font-family: helvetica;
-  font-size: 150%;
-}
+
 
 .info-box {
   display: block;
   min-height: 90px;
   background: #fff;
-  width: 100%;
+  /*width: 100%;*/
   box-shadow: 0 1px 1px rgba(0,0,0,0.1);
   border-radius: 2px;
   margin-bottom: 15px;
@@ -44,6 +33,7 @@
   text-align: center;
   font-size: 45px;
   line-height: 90px;
+  position: relative;
   background: rgba(0,0,0,0.2);
 }
 .info-box-content {
@@ -70,7 +60,7 @@
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 </style>
-<div class="mdl-js-layout mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid mdl-grid--no-spacing">
+<div class="mdl-grid mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid--no-spacing">
 
   <div class=" mdl-cell mdl-cell--3-col mdl-cell mdl-cell--12-col-phone">
     <div class="info-box">
@@ -110,34 +100,50 @@
     <!-- /.info-box -->
   </div>
 
-    <div class="mdl-cell mdl-cell--6-col-desktop">
-      <div id="piechart" style="height:400px;"></div>
+  <div class="  mdl-cell mdl-cell--3-col mdl-cell mdl-cell--12-col-phone">
+    <div class="info-box">
+      <span class="bg-aqua info-box-icon"><i class="material-icons md-48 md-light ">&#xE85C;</i></span>
+
+      <div class="info-box-content">
+        <span class="info-box-text">R$ VALOR TOTAL <br> EM PROJETOS</span>
+        <span class="info-box-number">{{number_format($somaProjetos, 2, ',', '.')}}<small> </small></span>
+      </div>
+      <!-- /.info-box-content -->
     </div>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-      <script type="text/javascript">
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
+    <!-- /.info-box -->
+  </div>
+</div>
+  {{-- <div class="mdl-cell mdl-cell--6-col-desktop">
 
-        function drawChart() {
+    <div id="piechart" ></div>
+  </div> --}}
 
-          var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Work',     11],
-            ['Eat',      2],
-            ['Commute',  2],
-            ['Watch TV', 2],
-            ['Sleep',    7]
-          ]);
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 
-          var options = {
-            title: 'Projetos por clientes'
-          };
+function drawChart() {
 
-          var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Work',     11],
+    ['Eat',      2],
+    ['totalprojetos', 2],
+    ['Commute',  2],
+    ['Watch TV', 2],
+    ['Sleep',    7]
+  ]);
 
-          chart.draw(data, options);
-        }
-      </script>
+  var options = {
+    title: 'Projetos por clientes'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, options);
+}
+</script>
 
 
 
