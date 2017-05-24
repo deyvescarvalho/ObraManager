@@ -38,7 +38,7 @@ class ProjetoController extends Controller
 
   public function create()
   {
-    $clientes = Cliente::all();
+    $clientes = Cliente::where('user_id', Auth::getUser()->id)->get();
     return view('projeto.cadastro', compact('clientes'));
   }
 
