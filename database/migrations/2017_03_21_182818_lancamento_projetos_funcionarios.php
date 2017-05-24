@@ -20,7 +20,7 @@ class LancamentoProjetosFuncionarios extends Migration
           $table->integer('funcionario_id')->unsigned();
           $table->foreign('funcionario_id')->references('id')->on('funcionarios');
           $table->string('dataLancamento');
-          $table->float('valorSalario');
+          $table->float('valorSalario',15 , 4);
           $table->timestamps();
       });
     }
