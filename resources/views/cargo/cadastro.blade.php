@@ -38,7 +38,7 @@
     {!! Form::submit('Enviar', ['class'=>'mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect']) !!}
   </div>
 
-  {!! Form::close() !!}
+  {{-- {!! Form::close() !!} --}}
 
 </div>
 

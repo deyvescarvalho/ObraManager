@@ -11,7 +11,7 @@ class ProdutoTableSeeder extends Seeder
      */
     public function run()
     {
-        App\Produto::truncate();
+        // App\Produto::truncate();
         factory('App\Produto',20)->create();
     }
 }

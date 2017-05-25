@@ -24,7 +24,7 @@
     @if (count($projetos) > 0)
 
 
-      <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
+      <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">
         <thead>
           <tr>
             <th class="mdl-data-table__header--sorted-ascending mdl-data-table__cell--non-numeric">Cliente</th>
@@ -38,10 +38,29 @@
           $count =1
           @endphp
           @foreach($projetos as $projeto)
-            <tr>
+            <a href="{{ route('projeto.view', ['id'=>$projeto->id]) }}" >
+              {{-- <i class="material-icons">visibility</i> --}}
+            <div class="mdl-cell mdl-cell--12-col-phone demo-card-square mdl-card mdl-shadow--2dp mdl-cell--hide-desktop">
+              <div class="mdl-card__title ">
+                <span><i class="material-icons md-light md-48">dashboard</i></span>
+              </div>
+              <a style="right:0; position:absolute;" href="{{ route('lancamento.create', ['id'=>$projeto->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                <i class="material-icons">add</i>
+              </a>
+              <div class="mdl-card__title ">
+                <h2 class="mdl-card__title-text"> {{ strtoupper($projeto->cliente->nome) }}</h2>
+              </div>
+              <div class="mdl-card__supporting-text ">
+                <p class="mdl-card__title-text">Valor: {{number_format($projeto->valorobra, 2, ',', '.')}}</p>
+                <p class="mdl-card__title-text">Endereço: {{$projeto->endereco}} - {{ $projeto->cidade }}</p>
+              </div>
+            </div>
+          </a>
 
+
+            <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
               <td class="mdl-data-table__cell--non-numeric ">{{$projeto->cliente->nome}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{ number_format(doubleval( $projeto->valorobra), 2, ',', '.')}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{ number_format($projeto->valorobra, 2, ',', '.')}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$projeto->endereco}} - {{ $projeto->cidade }}</td>
               <td id="viewProject{{print_r($count)}}" class="mdl-data-table__cell--non-numeric">
                 <a href="{{ route('projeto.view', ['id'=>$projeto->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">

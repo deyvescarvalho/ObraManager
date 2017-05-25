@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Categoria;
 use App\Http\Requests\CategoriaRequest;
+use Auth;
 class CategoriaController extends Controller
 {
 
@@ -17,7 +18,7 @@ class CategoriaController extends Controller
 
     public function index()
     {
-      $categorias = $this->categoria->paginate(5);
+      $categorias = $this->categoria->where('user_id', Auth::getUser()->id)->paginate(10);
 
       return view('categoria.listagem', compact('categorias'));
     }
@@ -29,10 +30,9 @@ class CategoriaController extends Controller
 
     public function store(CategoriaRequest $request)
     {
-
-
-      $this->categoria->create($request->all());
-
+      $this->categoria->user_id = Auth::getUser()->id;
+      $this->categoria->descricao = $request->input('descricao');
+      $this->categoria->save();
       return redirect()->route('categoria.create')->with('status', 'Categoria cadastrada!');
     }
 
@@ -43,10 +43,12 @@ class CategoriaController extends Controller
       return view('categoria.edit', compact('categoria'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, CategoriaRequest $request)
     {
-      $this->categoria->find($id)->update($request->all());
-
+      $this->categoria = $this->categoria->find($id);
+      $this->categoria->user_id = Auth::getUser()->id;
+      $this->categoria->descricao = $request->input('descricao');
+      $this->categoria->update();
       return redirect()->route('categoria.listagem')->with('status', 'Categoria editada');
     }
 

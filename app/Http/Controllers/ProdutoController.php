@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-// use Illuminate\Http\Request;
-use Illuminate\Http\ProdutoRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\ProdutoRequest;
 use App\Produto;
 use App\Categoria;
+use Auth;
 class ProdutoController extends Controller
 {
 
@@ -19,7 +20,7 @@ class ProdutoController extends Controller
 
     public function index()
     {
-      $produtos = $this->produto->paginate(15);
+      $produtos = $this->produto->where('user_id', Auth::getUser()->id)->paginate(10);
 
 
       return view('produto.listagem', compact('produtos'));
@@ -27,7 +28,7 @@ class ProdutoController extends Controller
 
     public function create()
     {
-      $categorias = $this->categoria->all();
+      $categorias = $this->categoria->where('user_id', Auth::getUser()->id)->get();
 
       return view('produto.cadastro', compact('categorias'));
     }
@@ -35,7 +36,10 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
 
-      $this->produto->create($request->all());
+      $this->produto->user_id = Auth::getUser()->id;
+      $this->produto->categoria_id = $request->input('categoria_id');
+      $this->produto->descricao = $request->input('descricao');
+-     $this->produto->save();
 
       return redirect()->route('produto.create')->with('status', 'Produto cadastrado!');
     }
@@ -43,7 +47,7 @@ class ProdutoController extends Controller
     public function edit($id)
     {
 
-      $categorias = $this->categoria->all();
+      $categorias = $this->categoria->where('user_id', Auth::getUser()->id)->get();
 
       $produto = $this->produto->find($id);
 
@@ -52,8 +56,11 @@ class ProdutoController extends Controller
 
     public function update($id, ProdutoRequest $request)
     {
-      $this->produto->find($id)->update($request->all());
-
+      $this->produto = $this->produto->find($id);
+      $this->produto->user_id = Auth::getUser()->id;
+      $this->produto->categoria_id = $request->input('categoria_id');
+      $this->produto->descricao = $request->input('descricao');
+      $this->produto->update();
       return redirect()->route('produto.listagem')->with('status', 'Produto editado');
     }
 

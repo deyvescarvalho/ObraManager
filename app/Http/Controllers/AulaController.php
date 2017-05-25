@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ClienteRequest;
 use App\Cliente;
 
 class AulaController extends Controller
@@ -45,7 +46,7 @@ class AulaController extends Controller
       return view('aula.edit', compact('aula'));
     }
 
-    public function update($id, Request $request)
+    public function update($id, ClienteRequest $request)
     {
 
       $this->aula->find($id)->update($request->all());
@@ -60,7 +61,7 @@ class AulaController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
       $this->validate($request, [
         'nome' => ['required', 'min:10'],

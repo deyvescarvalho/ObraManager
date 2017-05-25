@@ -27,11 +27,12 @@ class CreateLancamentoProjetosTable extends Migration
             $table->foreign('produto_id')->references('id')->on('produtos')
               ->onUpdate('cascade')
               ->onDelete('set null');
-            $table->string('dataLancamento');
-            $table->float('valorItem');
-            $table->float('qtdItem');
+            $table->date('dataLancamento');
+            $table->float('valorItem', 15, 0);
+            $table->float('qtdItem', 15, 0);
             // $table->float('total');
         });
+
     }
 
     /**

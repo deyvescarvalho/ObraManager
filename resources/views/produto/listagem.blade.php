@@ -24,7 +24,7 @@
 
   @if (count($produtos) > 0)
 
-  <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp ">
+  <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">
     <thead>
       <tr>
         <th class="mdl-data-table__header--sorted-ascending mdl-data-table__cell--non-numeric">Descrição</th>
@@ -34,8 +34,17 @@
     </thead>
     <tbody>
       @foreach($produtos as $produto)
-        {{$produto->descricao}}
-      <tr>
+        <div class="mdl-cell mdl-cell--12-col-phone demo-card-square mdl-card mdl-shadow--2dp mdl-cell--hide-desktop">
+          <div class="mdl-card__title ">
+            <span><i class="material-icons md-light md-48">class</i></span>
+            <h2 class="mdl-card__title-text"> {{ strtoupper($produto->descricao) }}</h2>
+          </div>
+          <div class="mdl-card__supporting-text ">
+            <p class="mdl-card__title-text">Categoria: {{$produto->categoria->descricao or 'Sem categoria'}}</p>
+          </div>
+        </div>
+
+      <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
         <td class="mdl-data-table__cell--non-numeric ">{{$produto->descricao}}</td>
         <td class="mdl-data-table__cell--non-numeric ">{{$produto->categoria->descricao or 'Sem categoria'}}
         </td>

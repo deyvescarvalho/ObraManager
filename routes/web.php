@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function(){
   Route::post('/lancamento', ['as'=>'lancamento.store', 'uses'=>'LancamentoProjetoController@store']);
   Route::post('/lancamento/funcionario', ['as'=>'lancamento.lancaFuncionario', 'uses'=>'LancamentoProjetoController@lancaFuncionario']);
   Route::get('/lancamento/{id}', ['as'=>'lancamento.create', 'uses'=>'LancamentoProjetoController@create']);
+  Route::get('/lancamento/{id}/remove-funcionario/{funcionario_id}', ['as'=>'lancamento.removefuncionario', 'uses'=>'LancamentoProjetoController@removeFuncionario']);
+  Route::get('/lancamento/{id}/remove-item/{item_id}', ['as'=>'lancamento.removeItem', 'uses'=>'LancamentoProjetoController@removeItem']);
 
 
   Route::get('/', 'ClienteController@index');
@@ -62,6 +64,8 @@ Route::group(['middleware' => 'auth'], function(){
 
   });
 
+  Route::get('pdf/cliente', ['as' => 'pdf.cliente', 'uses' => 'PdfClienteController@index']);
+
   Route::group(['as'=>'cargo.', 'prefix'=>'cargo'], function ()
   {
 
@@ -69,7 +73,9 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('novo', ['as'=>'create', 'uses'=>'CargoController@create']);
 
-    Route::post('novo', ['as'=>'store', 'uses'=>'CargoController@store']);
+    Route::post('novo', ['as'=>'storeDinamico', 'uses'=>'CargoController@storeDinamico']);
+    Route::post('novo/dinamico', ['as'=>'store', 'uses'=>'CargoController@store']);
+    Route::get('ajax', ['as'=>'ajax', 'uses'=>'CargoController@cargosJson']);
 
 
     Route::get('edit/{id}', ['as' => 'edit', 'uses'=>'CargoController@edit']);

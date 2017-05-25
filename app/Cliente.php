@@ -8,12 +8,14 @@ class Cliente extends Model
 {
     protected $fillable = [
       'nome',
+      'user_id',
       'cpf',
       'email',
       'idade',
-      'dia',
-      'mes',
-      'ano',
+      'dtNascimento',
+      // 'dia',
+      // 'mes',
+      // 'ano',
       'ddd',
       'telefone',
       'cidade',
@@ -23,5 +25,10 @@ class Cliente extends Model
     public function projeto()
     {
       return $this->hasMany(Projeto::class);
+    }
+
+    public function usuario()
+    {
+      return $this->belongsTo(User::class);
     }
 }

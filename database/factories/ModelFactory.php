@@ -24,21 +24,12 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
-
-$factory->define(App\Post::class, function (Faker\Generator $faker) {
-    return [
-        'title' => $faker->sentence,
-        'content' => $faker->paragraph
-    ];
-});
-
 $factory->define(App\Cliente::class, function (Faker\Generator $faker) {
     return [
         'nome' => $faker->name,
+        'user_id' => $faker->numberBetween(1, 2),
         'email' => $faker->email,
-        'dia' => $faker->randomNumber(2),
-        'mes' => $faker->randomNumber(2),
-        'ano' => $faker->randomNumber(4),
+        'dtNascimento' => date('Y-m-d', strtotime('2017-05-05')),
         'cpf' => $faker->ean13(11),
         'idade' => $faker->randomNumber(2),
         'endereco'=> $faker->address,
@@ -51,7 +42,8 @@ $factory->define(App\Cliente::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Cargo::class, function (Faker\Generator $faker) {
     return [
-        'descricao' => $faker->name
+        'descricao' => $faker->word,
+        'user_id' => $faker->numberBetween(1, 2)
     ];
 });
 
@@ -59,6 +51,7 @@ $factory->define(App\Fornecedor::class, function (Faker\Generator $faker) {
     return [
         'descricao' => $faker->name,
         'endereco'=> $faker->address,
+        'user_id' => $faker->numberBetween(1, 2),
         'cidade'=> $faker->city,
         'telefone'=> $faker->randomNumber(9),
         'ddd'=> $faker->randomNumber(2)
@@ -68,40 +61,40 @@ $factory->define(App\Fornecedor::class, function (Faker\Generator $faker) {
 $factory->define(App\Funcionario::class, function (Faker\Generator $faker) {
     return [
         'nome' => $faker->name,
+        'user_id' => $faker->numberBetween(1, 2),
         'email' => $faker->email,
-        'dia' => $faker->randomNumber(2),
-        'mes' => $faker->randomNumber(2),
-        'ano' => $faker->randomNumber(4),
+        'dtNascimento' => date('Y-m-d', strtotime('2017-05-05')),
         'cpf' => $faker->randomNumber(5),
         'idade' => $faker->randomNumber(2),
-        'cargo_id' => $faker->numberBetween(0, 10),
         'endereco'=> $faker->address,
         'cidade'=> $faker->city,
         'telefone'=> $faker->randomNumber(9),
-        'ddd'=> $faker->randomNumber(2)
+        'ddd'=> $faker->randomNumber(2),
+        'cargo_id' => $faker->numberBetween(1, 5)
     ];
 });
 
 $factory->define(App\Projeto::class, function (Faker\Generator $faker) {
     return [
-        'cliente_id'=> $faker->numberBetween(1, 10),
+        'cliente_id'=> $faker->numberBetween(1, 2),
         'endereco'=> $faker->address,
+        'user_id' => $faker->numberBetween(1, 2),
         'valorobra'=> $faker->randomFloat(2),
         'cidade'=> $faker->city
     ];
 });
 
-
-
 $factory->define(App\Produto::class, function (Faker\Generator $faker) {
     return [
         'descricao' => $faker->name,
+        'user_id' => $faker->numberBetween(1, 2),
         'categoria_id' => $faker->numberBetween(1,10)
     ];
 });
 
 $factory->define(App\Categoria::class, function (Faker\Generator $faker) {
     return [
-        'descricao' => $faker->word
+        'descricao' => $faker->word,
+        'user_id' => $faker->numberBetween(1, 2)
     ];
 });

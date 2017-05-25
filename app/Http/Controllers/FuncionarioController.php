@@ -1,10 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\FuncionarioRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\FuncionarioRequest;
 use App\Funcionario;
 use App\Cargo;
+use Auth;
 class FuncionarioController extends Controller
 {
 
@@ -18,20 +21,45 @@ class FuncionarioController extends Controller
   public function index()
   {
 
-    $funcionarios = $this->funcionario->paginate(5);
+    $funcionarios = $this->funcionario->where('user_id', Auth::getUser()->id)->paginate(10);
+
+    foreach ($funcionarios as $funcionario) {
+      $cpf = substr($funcionario->cpf, 0,3) . '.';
+      $cpf = $cpf . substr($funcionario->cpf, 3,3) . '.';
+      $cpf = $cpf . substr($funcionario->cpf, 5,3) . '-';
+      $cpf = $cpf . substr($funcionario->cpf, 8,2);
+      $funcionario->cpf = $cpf;
+    }
     return view('funcionario.listagem', compact('funcionarios'));
 
   }
 
   public function create()
   {
-    $cargos = Cargo::all();
+    $cargos = Cargo::where('user_id', Auth::getUser()->id)->get();
     return view('funcionario.cadastro', compact('cargos'));
   }
 
   public function store(FuncionarioRequest $request)
   {
-    $this->funcionario->create($request->all());
+    $this->funcionario->user_id = Auth::getUser()->id;
+    $this->funcionario->nome = $request->input('nome');
+    $this->funcionario->idade = $request->input('idade');
+    $this->funcionario->dtNascimento = $request->input('dtNascimento');
+    $this->funcionario->email = $request->input('email');
+    $this->funcionario->cpf = $request->input('cpf');
+    $this->funcionario->ddd = $request->input('ddd');
+    $this->funcionario->telefone = $request->input('telefone');
+    $this->funcionario->endereco = $request->input('endereco');
+    $this->funcionario->cidade = $request->input('cidade');
+    $this->funcionario->cargo_id = $request->input('cargo_id');
+
+    try {
+        $this->funcionario->save();
+    } catch (Exception $e) {
+      echo "Não concluído, erro: " . $e;
+    }
+
 
     return redirect()->route('funcionario.create')->with('status', 'Funcionário cadastrado com sucesso!');
   }
@@ -39,17 +67,30 @@ class FuncionarioController extends Controller
 
   public function edit($id)
   {
-    $cargos = Cargo::all();
+    $cargos = Cargo::where('user_id', Auth::getUser()->id)->get();
 
-    $funcionario = $this->funcionario->find($id);
+    $funcionario = $this->funcionario->with('cargo')->find($id);
 
     return view('funcionario.edit', compact(['funcionario', 'cargos']));
   }
 
   public function update($id, FuncionarioRequest $request)
   {
+    $this->funcionario = $this->funcionario->find($id);
+    $this->funcionario->cargo_id = $request->input('cargo_id');
+    $this->funcionario->nome = $request->input('nome');
+    $this->funcionario->idade = $request->input('idade');
+    $this->funcionario->dia = $request->input('dia');
+    $this->funcionario->mes = $request->input('mes');
+    $this->funcionario->ano = $request->input('ano');
+    $this->funcionario->email = $request->input('email');
+    $this->funcionario->cpf = $request->input('cpf');
+    $this->funcionario->ddd = $request->input('ddd');
+    $this->funcionario->telefone = $request->input('telefone');
+    $this->funcionario->endereco = $request->input('endereco');
+    $this->funcionario->cidade = $request->input('cidade');
 
-    $this->funcionario->find($id)->update($request->all());
+    $this->funcionario->update();
 
     return redirect()->route('funcionario.listagem')->with('status', 'Funcionário alterado com sucesso!');
 

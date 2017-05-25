@@ -11,18 +11,17 @@ class CreateProdutosTable extends Migration
   *
   * @return void
   */
-  
+
   public function up()
   {
     Schema::create('produtos', function (Blueprint $table) {
       $table->increments('id');
-
       $table->integer('categoria_id')->unsigned()->nullable();
-
       $table->foreign('categoria_id')->references('id')->on('categorias')
       ->onUpdate('cascade')
       ->onDelete('set null');
-
+      $table->integer('user_id')->unsigned();
+      $table->foreign('user_id')->references('id')->on('users');
       $table->string('descricao');
       $table->timestamps();
     });

@@ -12,6 +12,7 @@ class Projeto extends Model
     protected $fillable = [
       'cliente_id',
       'endereco',
+      'user_id',
       'cidade',
       'valorobra'
     ];
@@ -29,6 +30,11 @@ class Projeto extends Model
     public function produtos()
     {
       return $this->belongsToMany(Produto::class, 'lancamento_projetos')->withPivot(['fornecedor_id','dataLancamento','valorItem','qtdItem']);
+    }
+
+    public function usuario()
+    {
+      return $this->belongsTo(User::class);
     }
 
     // public function fornecedores()

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\CargoRequest;
+use Illuminate\Http\Request;
 use App\Cargo;
+use App\Http\Requests\CargoRequest;
+use Auth;
+use Response;
 class CargoController extends Controller
 {
   private $cargo;
@@ -15,7 +18,7 @@ class CargoController extends Controller
 
     public function index()
     {
-      $cargos = $this->cargo->paginate(5);
+      $cargos = $this->cargo->where('user_id', Auth::getUser()->id)->paginate(10);
 
       return view('cargo.listagem', compact('cargos'));
     }
@@ -25,11 +28,28 @@ class CargoController extends Controller
       return view('cargo.cadastro');
     }
 
-    public function store(CargoRequest $request)
+    public function store(Request $request)
     {
-      $this->cargo->create($request->all());
+      $this->cargo->descricao = $request->input('descricao');
+      $this->cargo->user_id = Auth::getUser()->id;
+      $this->cargo->save();
 
-      return redirect()->route('cargo.create')->with('status', 'Cargo cadastrada!');
+      return redirect()->route('cargo.create')->with('status', 'Cargo cadastrado!');
+    }
+
+    public function storeDinamico(Request $request)
+    {
+      $this->cargo->descricao = $request->input('descricao');
+      $this->cargo->user_id = Auth::getUser()->id;
+      $this->cargo->save();
+
+      return redirect()->route('funcionario.create')->with('status', 'Cargo cadastrado!');
+    }
+
+    public function cargosJson()
+    {
+      $cargos = $this->cargo->where('user_id', Auth::getUser()->id)->orderBy('descricao', 'asc')->get(['id', 'descricao']);
+      return Response::json($cargos);
     }
 
     public function edit($id)
@@ -39,10 +59,12 @@ class CargoController extends Controller
       return view('cargo.edit', compact('cargo'));
     }
 
-    public function update($id, CargoRequest $request)
+    public function update($id, Request $request)
     {
-      $this->cargo->find($id)->update($request->all());
-
+      $this->cargo = $this->cargo->find($id);
+      $this->cargo->descricao = $request->input('descricao');
+      $this->cargo->user_id = Auth::getUser()->id;
+      $this->cargo->update();
       return redirect()->route('cargo.listagem')->with('status', 'Cargo editado');
     }
 

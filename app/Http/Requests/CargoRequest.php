@@ -24,14 +24,15 @@ class CargoRequest extends FormRequest
     public function rules()
     {
         return [
-            'descricao' : 'required'
+            'descricao' : 'required|max:15'
         ];
     }
 
     public function messages()
     {
       return [
-        'descricao.required' => 'Atenção! Digita uma descrição.'
+        'descricao.max' => 'Atenção! o campo descrição deve conter no máximo 15 caractéres.'
+        'descricao.required' => 'Atenção! Digite uma descrição.'
       ];
     }
 }

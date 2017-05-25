@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Projeto;
+use App\Funcionario;
+use App\Cliente;
+use Auth;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('cliente.index');
+        $totalProjetos = Projeto::where('user_id', Auth::getUser()->id)->count();
+        $somaProjetos = Projeto::where('user_id', Auth::getUser()->id)->sum('valorobra');
+        // dd(number_format($somaProjetos, 2, ',', '.'));
+        $totalFuncionario = Funcionario::where('user_id', Auth::getUser()->id)->count();
+        $totalCliente = Cliente::where('user_id', Auth::getUser()->id)->count();
+        return view('cliente.index', compact('totalProjetos', 'totalFuncionario', 'totalCliente', 'somaProjetos'));
     }
 }

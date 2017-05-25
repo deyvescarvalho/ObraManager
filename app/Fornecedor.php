@@ -8,6 +8,7 @@ class Fornecedor extends Model
 {
     protected $fillable = [
       'descricao',
+      'user_id',
       'ddd',
       'telefone',
       'endereco',
@@ -22,6 +23,11 @@ class Fornecedor extends Model
     public function produtos()
     {
       return $this->belongsToMany(Produto::class, 'lancamento_projetos');
+    }
+
+    public function usuario()
+    {
+      return $this->belongsTo(User::class);
     }
 
 

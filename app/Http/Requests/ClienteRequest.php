@@ -25,15 +25,14 @@ class ClienteRequest extends FormRequest
     {
         return [
             'nome' => 'required|max:30 ',
-            'cpf' => 'required|min:11|max:11',
+            'idade' => 'required|min:2|max:3',
+            'dtNascimento' => 'required',
             'email' => 'email',
-            'idade' => 'nullable',
-            'dia' => 'nullable',
-            'mes' => 'nullable',
-            'ano' => 'nullable',
-            'telefone' => 'required',
-            'cidade' => 'required',
-            'endereco' => 'required'
+            'cpf' => 'required|min:11|max:11',
+            'ddd' => 'required|min:2|max:2',
+            'telefone' => 'required|min:8|max:9',
+            'endereco' => 'required|min:5|max:40',
+            'cidade' => 'required'
         ];
     }
 
@@ -41,11 +40,25 @@ class ClienteRequest extends FormRequest
     {
       return [
         'nome.required' => 'Informe um nome válido!',
-        'nome.max' => 'A quantidade de caracteres, deve ser inferior a 30',
+        'nome.max' => 'A quantidade de caracteres do campo nome, deve ser inferior a 30',
+        'cpf.required' => 'Informe um CPF válido!',
+        'cpf.min' => 'Informe um CPF com no mínimo, 11 números!',
+        'cpf.max' => 'Informe um CPF com no máximo, 11 números!',
+        'idade.required' => 'Informe uma idade!',
+        'idade.min' => 'Informe uma idade com no mínimo 2 números!',
+        'idade.max' => 'Informe uma idade com no máximo 3 números!',
+        'dtNascimento.required' => 'Informe uma data de nascimento válida',
         'email.email' => 'Informe um e-mail válido',
         'telefone.required' => 'Informe um telefone válido!',
+        'telefone.min' => 'Informe um telefone com no mínimo 8 números!',
+        'telefone.max' => 'Informe um telefone com no máximo 9 números!',
         'cidade.required' => 'Informe uma cidade válida!',
-        'endereco.required' => 'Informe um endereço válido!'
+        'ddd.required' => 'Informe um ddd válido!',
+        'ddd.max' => 'Informe um ddd com no máximo 2 números!',
+        'ddd.min' => 'Informe um ddd com no mínimo 2 números!',
+        'endereco.required' => 'Informe um endereço válido!',
+        'endereco.min' => 'Informe um endereço com no mínimo 5 caracteres!',
+        'endereco.max' => 'Informe um endereço com no máximo 40 caracteres!'
       ];
 
     }

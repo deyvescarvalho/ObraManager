@@ -11,7 +11,7 @@ class CargoTableSeeder extends Seeder
      */
     public function run()
     {
-      Cargo::truncate();
-      factory('App\Cargo', 10)->create();
+      // Cargo::truncate();
+      factory(Cargo::class, 20)->create();
     }
 }

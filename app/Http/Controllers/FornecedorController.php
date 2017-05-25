@@ -1,11 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\FornecedorRequest;
+use Illuminate\Http\Request;
+use App\Http\Requests\FornecedorRequest;
 use App\Fornecedor;
 use App\User;
-
+use Auth;
 class FornecedorController extends Controller
 {
     private $fornecedor;
@@ -17,8 +17,7 @@ class FornecedorController extends Controller
 
     public function index()
     {
-      $user = User::find(1);
-      $fornecedores = $this->fornecedor->paginate(10);
+      $fornecedores = $this->fornecedor->where('user_id', Auth::getUser()->id)->Paginate(10);
       return view('fornecedor.listagem', compact(['fornecedores', 'user']));
     }
 
@@ -29,7 +28,13 @@ class FornecedorController extends Controller
 
     public function store(FornecedorRequest $request)
     {
-      $this->fornecedor->create($request->all());
+      $this->fornecedor->user_id = Auth::getUser()->id;
+      $this->fornecedor->descricao = $request->input('descricao');
+      $this->fornecedor->ddd = $request->input('ddd');
+      $this->fornecedor->telefone = $request->input('telefone');
+      $this->fornecedor->endereco = $request->input('endereco');
+      $this->fornecedor->cidade = $request->input('cidade');
+      $this->fornecedor->save();
 
       return redirect()->route('fornecedor.create')->with('status', 'Fornecedor cadastrado com sucesso!');
     }
@@ -43,7 +48,13 @@ class FornecedorController extends Controller
 
     public function update($id, FornecedorRequest $request)
     {
-      $this->fornecedor->find($id)->update($request->all());
+      $this->fornecedor = $this->fornecedor->find($id);
+      $this->fornecedor->descricao = $request->input('descricao');
+      $this->fornecedor->ddd = $request->input('ddd');
+      $this->fornecedor->telefone = $request->input('telefone');
+      $this->fornecedor->endereco = $request->input('endereco');
+      $this->fornecedor->cidade = $request->input('cidade');
+      $this->fornecedor->update();
 
       return redirect()->route('fornecedor.listagem')->with('status', 'Fornecedor alterado com suesso!');
     }

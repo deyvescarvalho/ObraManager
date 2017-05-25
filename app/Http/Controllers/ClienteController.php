@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\ClienteRequest;
+use Illuminate\Http\Request;
 use App\Cliente;
-
+use App\Http\Requests\ClienteRequest;
+use Auth;
 class ClienteController extends Controller
 {
   private $cliente;
@@ -16,19 +16,36 @@ class ClienteController extends Controller
 
   public function index()
   {
+    // dd(Auth);
+    // $this->cliente->all();
     return view('cliente.index');
   }
 
   public function store(ClienteRequest $request)
   {
-    $this->cliente->create($request->all());
+    $this->cliente->user_id = Auth::getUser()->id;
+    $this->cliente->nome = $request->input('nome');
+    $this->cliente->dtNascimento = $request->input('dtNascimento');
+    // $this->cliente->dia = $request->input('dia');
+    // $this->cliente->mes = $request->input('mes');
+    // $this->cliente->ano = $request->input('ano');
+    $this->cliente->cpf = $request->input('cpf');
+    $this->cliente->email = $request->input('email');
+    $this->cliente->idade = $request->input('idade');
+    $this->cliente->telefone = $request->input('telefone');
+    $this->cliente->ddd = $request->input('ddd');
+    $this->cliente->cidade = $request->input('cidade');
+    $this->cliente->endereco = $request->input('endereco');
+    $this->cliente->save();
+    // $this->cliente->create($request->all());
 
     return redirect()->route('cliente.novo')->with('status', 'Cliente cadastrado!');
   }
 
   public function clientes()
   {
-    $clientes = $this->cliente->paginate(10);
+
+    $clientes = $this->cliente->where('user_id', Auth::getUser()->id)->Paginate(10);
 
     foreach ($clientes as $cliente) {
       $cpf = substr($cliente->cpf, 0,3) . '.';

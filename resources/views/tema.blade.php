@@ -8,7 +8,7 @@
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="/images/android-desktop.png">
+  <link rel="icon" sizes="192x192" href="/images/obraManager/ico.png">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,10 +17,10 @@
   <link rel="apple-touch-icon-precomposed" href="/images/ios-desktop.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileImage" content="/images/obraManager/ico.png">
   <meta name="msapplication-TileColor" content="#3372DF">
 
-  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="shortcut icon" href="/images/obraManager/ico.png">
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -65,7 +65,7 @@
   .demo-card-wide > .mdl-card__title {
     color: #fff;
     height: 176px;
-    background: url('../assets/demos/welcome_card.jpg') center / cover;
+    /*background: url('../assets/demos/welcome_card.jpg') center / cover;*/
   }
   .demo-card-wide > .mdl-card__menu {
     color: #fff;
@@ -87,6 +87,7 @@
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">@yield('title_page')</span>
+        <img style="position:absolute;right: 0;" src="images\obraManager\logo2.png" alt="" width="115px" height="70px">
         <div class="mdl-layout-spacer"></div>
         {{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -108,6 +109,7 @@
     </header>
 
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+
       <header class="demo-drawer-header">
         <img src="/images/user_icon.png" class="demo-avatar">
         <div class="demo-avatar-dropdown">
@@ -120,27 +122,18 @@
           <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
             <li class="mdl-menu__item">{{ $user->email }}</li>
             <a href="{{route('auth.logout')}}"> <li class="mdl-menu__item">  Sair </li> </a>
-            {{-- <li class="mdl-menu__item"><i class="material-icons">add</i>Add another account...</li> --}}
-            {{-- <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">delete</i>Trash</a> --}}
           </ul>
         </div>
       </header>
       <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
         <a class="mdl-navigation__link" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">dashboard</i>Principal</a>
-        {{-- <a class="mdl-navigation__link" href="/cliente/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Clientes</a>
-        <a class="mdl-navigation__link" href="/categoria/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Categoria</a>
-        <a class="mdl-navigation__link" href="/produto/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Produto</a>
-        <a class="mdl-navigation__link" href="/funcionario/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Funcionário</a>
-        <a class="mdl-navigation__link" href="/fornecedor/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Fornecedor</a>
-        <a class="mdl-navigation__link" href="/projeto/novo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">inbox</i>Cadastro de Projetos</a> --}}
         <a class="mdl-navigation__link" href="/cliente"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Clientes</a>
         <a class="mdl-navigation__link" href="/fornecedor"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Fornecedores</a>
         <a class="mdl-navigation__link" href="/funcionario"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Funcionários</a>
-        <a class="mdl-navigation__link" href="/categoria"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Categorias</a>
-        <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Produtos</a>
-        <a class="mdl-navigation__link" href="/cargo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Profissões</a>
-        <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">people</i>Projetos</a>
-
+        <a class="mdl-navigation__link" href="/categoria"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">speaker_notes</i>Categorias</a>
+        <a class="mdl-navigation__link" href="/produto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">shopping_cart</i>Produtos</a>
+        <a class="mdl-navigation__link" href="/cargo"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assistant</i>Profissões</a>
+        <a class="mdl-navigation__link" href="/projeto"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">business</i>Projetos</a>
       </nav>
     </div>
     <main class="mdl-layout__content mdl-color--grey-100">
@@ -196,11 +189,11 @@
       </g>
     </defs>
   </svg>
-
   <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.0/jspdf.plugin.autotable.js"></script> --}}
 <script src="/js/mascara_moeda.js" charset="utf-8"></script>
 
 </body>

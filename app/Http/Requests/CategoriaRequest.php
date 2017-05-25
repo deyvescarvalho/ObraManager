@@ -24,14 +24,15 @@ class CategoriaRequest extends FormRequest
   public function rules()
   {
     return [
-       'descricao' => 'required'
+       'descricao' => 'required|max:15'
    ];
   }
 
   public function messages()
   {
     return [
-      'descricao.required' => 'O campo descrição, é obrigatório.'
+      'descricao.required' => 'O campo descrição, é obrigatório.',
+      'descricao.max' => 'O campo descriçao deve conter no máximo 15 caractéres.'
     ];
   }
 }
