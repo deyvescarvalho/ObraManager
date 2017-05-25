@@ -18,4 +18,11 @@ class PdfClienteController extends Controller
       $pdf = PDF::loadView('cliente.pdf', ['clientes' => $clientes]);
       return $pdf->stream('cliente.pdf');
     }
+
+    public function aniversariantes($mesInicio, $mesFinal)
+    {
+      $clientesAniversario = Cliente::where('user_id', Auth::getUser()->id)->whereBetween('dtNascimento', ['2015-01-01', '2017-05-05'])->get();
+      $pdf = PDF::loadView('cliente.pdf', ['clientes' => $clientesAniversario]);
+      return $pdf->stream('cliente.pdf');
+    }
 }

@@ -16,6 +16,10 @@
   <meta name="apple-mobile-web-app-title" content="Material Design Lite">
   <link rel="apple-touch-icon-precomposed" href="/images/ios-desktop.png">
 
+  <meta property="og:title" content="ObraManager">
+<meta property="og:image" content="/images/obraManager/logo2.png">
+<meta property="og:description" content="Software de lançamento de dados, para construção civil.">
+
   <!-- Tile icon for Win8 (144x144 + tile color) -->
   <meta name="msapplication-TileImage" content="/images/obraManager/ico.png">
   <meta name="msapplication-TileColor" content="#3372DF">
