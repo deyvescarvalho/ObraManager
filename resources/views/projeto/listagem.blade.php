@@ -38,10 +38,15 @@
           $count =1
           @endphp
           @foreach($projetos as $projeto)
+            <a href="{{ route('projeto.view', ['id'=>$projeto->id]) }}" >
+              {{-- <i class="material-icons">visibility</i> --}}
             <div class="mdl-cell mdl-cell--12-col-phone demo-card-square mdl-card mdl-shadow--2dp mdl-cell--hide-desktop">
               <div class="mdl-card__title ">
                 <span><i class="material-icons md-light md-48">dashboard</i></span>
               </div>
+              <a style="right:0; position:absolute;" href="{{ route('lancamento.create', ['id'=>$projeto->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
+                <i class="material-icons">add</i>
+              </a>
               <div class="mdl-card__title ">
                 <h2 class="mdl-card__title-text"> {{ strtoupper($projeto->cliente->nome) }}</h2>
               </div>
@@ -50,6 +55,8 @@
                 <p class="mdl-card__title-text">Endereço: {{$projeto->endereco}} - {{ $projeto->cidade }}</p>
               </div>
             </div>
+          </a>
+
 
             <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
               <td class="mdl-data-table__cell--non-numeric ">{{$projeto->cliente->nome}}</td>
