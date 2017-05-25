@@ -22,6 +22,14 @@ class FuncionarioController extends Controller
   {
 
     $funcionarios = $this->funcionario->where('user_id', Auth::getUser()->id)->paginate(10);
+
+    foreach ($funcionarios as $funcionario) {
+      $cpf = substr($funcionario->cpf, 0,3) . '.';
+      $cpf = $cpf . substr($funcionario->cpf, 3,3) . '.';
+      $cpf = $cpf . substr($funcionario->cpf, 5,3) . '-';
+      $cpf = $cpf . substr($funcionario->cpf, 8,2);
+      $funcionario->cpf = $cpf;
+    }
     return view('funcionario.listagem', compact('funcionarios'));
 
   }
