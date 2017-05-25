@@ -47,7 +47,7 @@
 
   <div class="demo-card-wide mdl-card mdl-shadow--2dp">
     <div class="mdl-card__supporting-text">
-      <h2 class="mdl-card__title-text">Cliente: {{$projeto->cliente->nome}}</h2>
+      <h2 class="mdl-card__title-text">Cliente: {{strtoupper($projeto->cliente->nome)}}</h2>
     </div>
     <div class="mdl-card__supporting-text">
       <h2 class="mdl-card__title-text">Endereço: {{$projeto->endereco}}</h2>
@@ -106,7 +106,7 @@
               $forn = App\Fornecedor::find($produto->pivot->fornecedor_id);
               @endphp
 
-              <td class="mdl-data-table__cell--non-numeric "> {{$produto->pivot->dataLancamento}}</td>
+              <td class="mdl-data-table__cell--non-numeric "> {{date('d/m/Y', strtotime($produto->pivot->dataLancamento))}}</td>
               <td class="mdl-data-table__cell--non-numeric "> {{ $produto->descricao}}</td>
               <td class="mdl-data-table__cell--non-numeric "> {{ $produto->categoria->descricao }}</td>
               <td class="mdl-data-table__cell--non-numeric "> {{ $forn->descricao or ' - ' }}</td>

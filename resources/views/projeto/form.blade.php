@@ -27,7 +27,7 @@
 
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--5-col">
 
-  {!! Form::select('cidade', array(null=>'Escolha uma cidade', 'jatai' => 'Jataí', 'rioverde' => 'Rio Verde'), null, ['class'=>'mdl-textfield__input']) !!}
+  {!! Form::select('cidade', array(null=>'Escolha uma cidade', 'Jataí' => 'Jataí', 'Rio Verde' => 'Rio Verde'), null, ['class'=>'mdl-textfield__input']) !!}
   <span class="mdl-textfield__error">Escolha uma cidade!</span>
 </div>
 
