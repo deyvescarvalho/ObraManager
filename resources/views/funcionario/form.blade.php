@@ -10,7 +10,7 @@
 
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--12-col{{ $errors->has('dtNascimento') ? ' has-error' : '' }}">
     {!! Form::label('dtNascimento', 'Data de Nascimento') !!}
-    {!! Form::date('dtNascimento', null, ['class' => 'form-control', 'required' => 'required']) !!}
+    {!! Form::date('dtNascimento', null, ['class' => 'mdl-textfield__input']) !!}
     <small class="mdl-textfield__error">{{ $errors->first('dtNascimento') }}</small>
 </div>
 
