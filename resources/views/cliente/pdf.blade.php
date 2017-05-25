@@ -37,7 +37,7 @@
             <tr>
               <td class="mdl-data-table__cell--non-numeric ">{{ ucwords(strtolower($cliente->nome)) }}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->idade}}</td>
-              <td class="mdl-data-table__cell--non-numeric">{{$cliente->dia}}/{{$cliente->mes}}/{{$cliente->ano}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{date('d/m/Y', strtotime($cliente->dtNascimento))}}</td>
               <td class="mdl-data-table__cell--non-numeric">{{$cliente->cpf}}</td>
               <td class="mdl-data-table__cell--non-numeric">({{$cliente->ddd}}) - {{$cliente->telefone}}</td>
               <td class="mdl-data-table__cell--non-numeric"><a href="{{ route('cliente.edit', ['id'=>$cliente->id]) }}" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored"><i class="material-icons">edit</i></a></td>
