@@ -6,7 +6,6 @@
 /.idea
 Homestead.json
 Homestead.yaml
-.env
 resources/views/vendor/mail/html/button.blade.php
 resources/views/vendor/mail/html/footer.blade.php
 resources/views/vendor/mail/html/header.blade.php
