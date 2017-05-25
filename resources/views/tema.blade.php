@@ -8,7 +8,7 @@
 
   <!-- Add to homescreen for Chrome on Android -->
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="icon" sizes="192x192" href="/images/android-desktop.png">
+  <link rel="icon" sizes="192x192" href="/images/obraManager/ico.png">
 
   <!-- Add to homescreen for Safari on iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,10 +17,10 @@
   <link rel="apple-touch-icon-precomposed" href="/images/ios-desktop.png">
 
   <!-- Tile icon for Win8 (144x144 + tile color) -->
-  <meta name="msapplication-TileImage" content="/images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileImage" content="/images/obraManager/ico.png">
   <meta name="msapplication-TileColor" content="#3372DF">
 
-  <link rel="shortcut icon" href="/images/favicon.png">
+  <link rel="shortcut icon" href="/images/obraManager/ico.png">
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -65,7 +65,7 @@
   .demo-card-wide > .mdl-card__title {
     color: #fff;
     height: 176px;
-    background: url('../assets/demos/welcome_card.jpg') center / cover;
+    /*background: url('../assets/demos/welcome_card.jpg') center / cover;*/
   }
   .demo-card-wide > .mdl-card__menu {
     color: #fff;
@@ -87,6 +87,7 @@
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">@yield('title_page')</span>
+        <img style="position:absolute;right: 0;" src="images\obraManager\logo2.png" alt="" width="115px" height="70px">
         <div class="mdl-layout-spacer"></div>
         {{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -108,6 +109,7 @@
     </header>
 
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+
       <header class="demo-drawer-header">
         <img src="/images/user_icon.png" class="demo-avatar">
         <div class="demo-avatar-dropdown">

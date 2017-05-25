@@ -9,7 +9,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('page_title', 'Obra Manager') }}</title>
-
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.cyan-light_blue.min.css">
+    <link rel="stylesheet" href="/css/stylesmd.css">
     <!-- Styles -->
     <link href="{{ asset('css/__app.css') }}" rel="stylesheet">
 
@@ -35,8 +36,9 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/home') }}">
-                        {{ config('title', 'Obra Manager') }}
+                    <a class="mdl-cell--hide-phone" href="{{ url('/') }}">
+                        {{-- {{ config('title', 'Obra Manager') }} --}}
+                        <img src="images\obraManager\logo2.png" alt="" width="120px" height="70px">
                     </a>
                 </div>
 
@@ -77,6 +79,11 @@
                 </div>
             </div>
         </nav>
+        <div class="mdl-grid mdl-cell--hide-desktop mdl-cell--hide-tablet">
+          <div class="mdl-cell mdl-cell--3-col mdl-cell--1-offset">
+            <img  src="images\obraManager\logo2.png" alt="" width="150px" height="80px">
+          </div>
+        </div>
 
         @yield('content')
     </div>
