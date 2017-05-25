@@ -38,7 +38,7 @@
         </tbody>
       </table>
     @else
-      <h2>Não hà clientes cadastrados</h2>
+      <h2 class="text-center">Sem dados para este relatório</h2>
     @endif
 
 </body>
