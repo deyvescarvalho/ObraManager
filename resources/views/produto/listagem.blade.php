@@ -21,6 +21,7 @@
   <a href="{{ route('produto.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
     <i class="material-icons">add</i>
   </a> Novo produto
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="{{route('pdf.produtos')}}" target="_blank" >Relatório de produtos</a>
 
   @if (count($produtos) > 0)
 
