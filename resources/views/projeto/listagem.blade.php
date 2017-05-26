@@ -21,6 +21,7 @@
     <a href="{{ route('projeto.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
       <i class="material-icons">add</i>
     </a> Novo projeto
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="{{route('pdf.projetos')}}" target="_blank" >Relatório de projetos</a>
     @if (count($projetos) > 0)
 
 

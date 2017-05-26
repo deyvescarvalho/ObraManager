@@ -21,6 +21,7 @@
   <a href="{{ route('fornecedor.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
     <i class="material-icons">add</i>
   </a> Novo fornecedor
+      <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="{{route('pdf.fornecedores')}}" target="_blank" >Relatório de fornecedores</a>
 @if (count($fornecedores) > 0)
   <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">
     <thead>

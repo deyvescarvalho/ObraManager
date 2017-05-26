@@ -21,6 +21,7 @@
     <a href="{{ route('cargo.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
       <i class="material-icons">add</i>
     </a> Novo cargo
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="{{route('pdf.cargos')}}" target="_blank" >Relatório de Profissões</a>
     @if (count($cargos) > 0)
 
       <table class="mdl-cell mdl-cell--12-col mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-cell--hide-phone mdl-cell--hide-tablet">

@@ -64,7 +64,18 @@ Route::group(['middleware' => 'auth'], function(){
 
   });
 
-  Route::get('pdf/cliente', ['as' => 'pdf.cliente', 'uses' => 'PdfClienteController@index']);
+
+  Route::group(['prefix'=>'pdf', 'middleware' => 'auth'], function()
+  {
+    Route::get('cliente', 'PdfClienteController@index')->name('pdf.cliente');
+    Route::get('cargo', 'PdfCargoController@index')->name('pdf.cargos');
+    Route::get('categoria', 'PdfCategoriaController@index')->name('pdf.categorias');
+    Route::get('fornecedor', 'PdfFornecedorController@index')->name('pdf.fornecedores');
+    Route::get('funcionario', 'PdfFuncionarioController@index')->name('pdf.funcionarios');
+    Route::get('produto', 'PdfProdutoController@index')->name('pdf.produtos');
+    Route::get('projeto', 'PdfProjetoController@index')->name('pdf.projetos');
+
+  });
 
   Route::group(['as'=>'cargo.', 'prefix'=>'cargo'], function ()
   {

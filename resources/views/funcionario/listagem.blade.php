@@ -21,6 +21,7 @@
     <a href="{{ route('funcionario.create') }}" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab">
       <i class="material-icons">add</i>
     </a> Novo funcionário
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--primary" href="{{route('pdf.funcionarios')}}" target="_blank" >Relatório de funcionarios</a>
 
     @if (count($funcionarios) > 0)
 
