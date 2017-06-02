@@ -95,8 +95,8 @@
                 <p class="mdl-card__title-text">Data: {{date('d/m/Y', strtotime($produto->pivot->dataLancamento))}}</p>
                 <p class="mdl-card__title-text">Categoria: {{$produto->categoria->descricao}}</p>
                 <p class="mdl-card__title-text">Qtd: {{$produto->pivot->qtdItem}}</p>
-                <p class="mdl-card__title-text">Valor R$ {{ number_format(substr($produto->pivot->valorItem, 0, -4), 2, ',', '.') }}</p>
-                <p class="mdl-card__title-text">Total R${{ number_format(intval($produto->pivot->qtdItem) * substr($produto->pivot->valorItem, 0, -4), 2, ',', '.') }}</p>
+                <p class="mdl-card__title-text">Valor R$ {{ number_format($produto->pivot->valorItem, 2, ',', '.') }}</p>
+                <p class="mdl-card__title-text">Total R${{ number_format(intval($produto->pivot->qtdItem) * $produto->pivot->valorItem, 2, ',', '.') }}</p>
               </div>
             </div>
 
@@ -110,9 +110,9 @@
               <td class="mdl-data-table__cell--non-numeric "> {{ $produto->descricao}}</td>
               <td class="mdl-data-table__cell--non-numeric "> {{ $produto->categoria->descricao }}</td>
               <td class="mdl-data-table__cell--non-numeric "> {{ $forn->descricao or ' - ' }}</td>
-              <td class="mdl-data-table__cell--non-numeric "> R$ {{ number_format(substr($produto->pivot->valorItem, 0, -4), 2, ',', '.') }}</td>
+              <td class="mdl-data-table__cell--non-numeric "> R$ {{ number_format($produto->pivot->valorItem, 2, ',', '.') }}</td>
               <td class="mdl-data-table__cell--non-numeric "> {{ $produto->pivot->qtdItem }}</td>
-              <td class="mdl-data-table__cell--non-numeric "> R$ {{ number_format(intval($produto->pivot->qtdItem) * substr($produto->pivot->valorItem, 0, -4), 2, ',', '.') }} </td>
+              <td class="mdl-data-table__cell--non-numeric "> R$ {{ number_format(intval($produto->pivot->qtdItem) * $produto->pivot->valorItem, 2, ',', '.') }} </td>
               <td class="mdl-data-table__cell--non-numeric">
                 <a href="{{ route('lancamento.removeItem', ['id'=>$projeto->id, 'item_id' => $produto->id]) }}" onClick="return confirm('Deseja realmente deletar o item ?')" class="mdl-button mdl-js-button mdl-button--icon mdl-button--colored">
                   <i class="material-icons">delete</i>
@@ -126,8 +126,8 @@
             </tr>
           @endforeach
           <tr class="mdl-cell--hide-phone mdl-cell--hide-tablet">
-            <td class="mdl-data-table__cell--5-non-numeric" colspan="6">Total de itens: {{ number_format(substr($somaQtd, 0, -4), 2, ',', '.' )}}</td>
-            <td class="mdl-data-table__cell--1-non-numeric " colspan="1">Total: R$ {{ number_format(substr($total, 0, -4), 2, ',', '.' )}}</td>
+            <td class="mdl-data-table__cell--5-non-numeric" colspan="6">Total de itens: {{ number_format($somaQtd, 2, ',', '.' )}}</td>
+            <td class="mdl-data-table__cell--1-non-numeric " colspan="1">Total: R$ {{ number_format($total, 2, ',', '.' )}}</td>
           </tr>
         </tbody>
       </table>
@@ -160,6 +160,9 @@
             </div>
             <div class="mdl-card__title mdl-card--expand">
               Cargo: {{ $funcionario->cargo->descricao }}
+            </div>
+            <div class="mdl-card__title mdl-card--expand">
+                Salário: R$ {{number_format($funcionario->pivot->valorSalario, 2, ',', '.' ) }}
             </div>
             <div class="mdl-card__actions mdl-card--border">
               <a href="{{ route('funcionario.detalhe',['id'=>$funcionario->id])}}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
