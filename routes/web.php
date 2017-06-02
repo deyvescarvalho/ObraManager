@@ -37,12 +37,15 @@ Route::group(['middleware' => 'auth'], function(){
 
 
   Route::get('/', 'ClienteController@index');
-  Route::get('/cliente', ['as'=>'cliente.listagem', 'uses'=>'ClienteController@clientes']);
-  Route::get('/cliente/novo', ['as'=>'cliente.novo', 'uses'=>'ClienteController@create']);
-  Route::post('/cliente/novo', ['as'=>'cliente.store', 'uses'=>'ClienteController@store']);
-  Route::get('/cliente/edit/{id}', ['as'=>'cliente.edit', 'uses'=>'ClienteController@edit']);
-  Route::put('/cliente/edit/{id}', ['as'=>'cliente.update', 'uses'=>'ClienteController@update']);
-  Route::get('/cliente/delete/{id}', ['as'=>'cliente.destroy', 'uses'=>'ClienteController@destroy']);
+
+  Route::group(['prefix'=>'cliente'], function(){
+    Route::get('', ['as'=>'cliente.listagem', 'uses'=>'ClienteController@clientes']);
+    Route::get('novo', ['as'=>'cliente.novo', 'uses'=>'ClienteController@create']);
+    Route::post('novo', ['as'=>'cliente.store', 'uses'=>'ClienteController@store']);
+    Route::get('edit/{id}', ['as'=>'cliente.edit', 'uses'=>'ClienteController@edit']);
+    Route::put('edit/{id}', ['as'=>'cliente.update', 'uses'=>'ClienteController@update']);
+    Route::get('delete/{id}', ['as'=>'cliente.destroy', 'uses'=>'ClienteController@destroy']);
+  });
 
   Route::group(['as'=>'projeto.', 'prefix'=>'projeto'], function ()
   {
