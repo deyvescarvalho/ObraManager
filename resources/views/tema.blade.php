@@ -92,7 +92,7 @@
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">@yield('title_page')</span>
-        <img style="position:absolute;right: 0;" src="/images/obraManager/logo2.png" alt="" width="115px" height="70px">
+        <img style="position:absolute;right: 0;" src="/images/obraManager/logo2.png" alt="Imagem de perfil" width="90px" height="70px">
         <div class="mdl-layout-spacer"></div>
         {{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
