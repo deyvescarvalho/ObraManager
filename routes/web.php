@@ -27,7 +27,8 @@ Route::group(['prefix'=>'aula'], function(){
 
 
 Route::group(['middleware' => 'auth'], function(){
-
+  Route::get('/usuario/perfil', ['as' => 'usuario.perfil', 'uses' => "HomeController@perfilAvatar"]);
+  Route::post('/usuario/perfil', ['as' => 'usuario.perfil.post', 'uses' => "HomeController@trocaAvatar"]);
 
   Route::post('/lancamento', ['as'=>'lancamento.store', 'uses'=>'LancamentoProjetoController@store']);
   Route::post('/lancamento/funcionario', ['as'=>'lancamento.lancaFuncionario', 'uses'=>'LancamentoProjetoController@lancaFuncionario']);

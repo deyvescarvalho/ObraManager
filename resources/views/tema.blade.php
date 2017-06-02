@@ -92,7 +92,7 @@
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
       <div class="mdl-layout__header-row">
         <span class="mdl-layout-title">@yield('title_page')</span>
-        <img style="position:absolute;right: 0;" src="images\obraManager\logo2.png" alt="" width="115px" height="70px">
+        <img style="position:absolute;right: 0;" src="/images/obraManager/logo2.png" alt="" width="115px" height="70px">
         <div class="mdl-layout-spacer"></div>
         {{-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
           <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -116,7 +116,17 @@
     <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
 
       <header class="demo-drawer-header">
-        <img src="/images/user_icon.png" class="demo-avatar">
+        <a href="{{route('usuario.perfil')}}">
+        @if (file_exists("./images/avatar/" . md5(Auth::getUser()->id) . ".jpg"))
+          <img src="{{ asset("images/avatar/" . md5(Auth::getUser()->id) . ".jpg") }}" style="border-radius: 50%;width:40%; height: 60%">
+        @elseif (file_exists("./images/avatar/" . md5(Auth::getUser()->id) . ".jpeg"))
+            <img src="{{ asset("images/avatar/" . md5(Auth::getUser()->id) . ".jpeg") }}" style="border-radius: 50%;width:40%; height: 60%">
+        @elseif (file_exists("./images/avatar/" . md5(Auth::getUser()->id) . ".png"))
+            <img src="{{ asset("images/avatar/" . md5(Auth::getUser()->id) . ".png") }}" style="border-radius: 50%;width:40%; height: 60%">
+        @else
+          <img src="/images/user_icon.png" class="demo-avatar">
+        @endif
+        </a>
         <div class="demo-avatar-dropdown">
           <span>Olá, {{ $user->name }} !</span>
           <div class="mdl-layout-spacer"></div>
